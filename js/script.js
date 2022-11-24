@@ -26,15 +26,3 @@ for (let i = 0; i <= pixels.length; ++i) {
 
 	pixels[i].addEventListener('mouseenter', paintIsh);
 }
-
-
-
-
-
-
-
-
-
-
-
-

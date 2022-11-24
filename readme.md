@@ -1,12 +1,12 @@
 # paintIsh
 <!-- [IMG-HERE](LINK TO DEMO HERE) -->
-<a href="https://www.theodinproject.com/lessons/foundations-rock-paper-scissors" target="_blank">The Odin Project</a> called this an etch-a-sketch… I disagree! It's more 'paintish' 🙃. I am currently designing and programming it using vanilla HTML, CSS & JavaScript for… <a href="https://www.theodinproject.com/lessons/foundations-rock-paper-scissors" target="_blank">The Odin Project</a>.
+<a href="https://www.theodinproject.com/lessons/foundations-rock-paper-scissors" target="_blank">The Odin Project</a> called this an etch-a-sketch… I disagree! It's more 'paintish' 🙃. I am currently designing and programming it using vanilla HTML, CSS & JavaScript for them.
 
 ### Notes
 
-I'm currently this! The color palette is inspired by the insanely creative, animated Netflix series: <a href="https://www.netflix.com/title/80174608">Love, Death & Robot</a>… specifically the episode <a href="https://lovedeathrobots.fandom.com/wiki/Zima_Blue" target="_blank">Zima Blue</a>.
+I'm currently building 🛠 this! The color palette is inspired by the insanely creative, animated Netflix series: <a href="https://www.netflix.com/title/80174608">Love, Death & Robots</a>… specifically the episode <a href="https://lovedeathrobots.fandom.com/wiki/Zima_Blue" target="_blank">Zima Blue</a>.
 
-Included is the initial logic and the minimally designed interface. I think I will keep it this way throughout the project.  
+Included is the initial logic and the minimally designed interface (… I think I will keep it this way throughout the project 🤔).  
 
 ### - ツkc💭
 
