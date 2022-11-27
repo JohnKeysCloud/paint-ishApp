@@ -1,28 +1,31 @@
 const canvas = document.getElementById('canvas');
-let pixelSetting = 16;
+const pixels = document.getElementsByClassName("pixel");
+const root = document.documentElement;
+
+let oneAxisLength = 16;
+let pixelSetting = oneAxisLength ** 2;
 
 // pixelCreation
 for (let i = 0; i < pixelSetting; ++i) {
 	let pixelBorder = document.createElement('div');
 	pixelBorder.classList.add('pixel-border');
-
+	
 	let pixel = document.createElement('div');
 	pixel.classList.add('pixel');
-
+	
 	pixelBorder.appendChild(pixel);	
 	canvas.appendChild(pixelBorder);
 }
 
 // pixelRaiseOpacity
-let pixels = document.getElementsByClassName('pixel');
-for (let i = 0; i <= pixels.length; ++i) {
-	let opacity = 0;
-
-	function paintIsh(e) {
-		if (opacity === 1) return;
-		console.log(e.target);
-		e.target.style.opacity = opacity += 0.2;
-	}
-
-	pixels[i].addEventListener('mouseenter', paintIsh);
+function paintIsh(e) {
+	let currentOpacity = +e.target.style.opacity;
+	let initialOpacity = 0.2;
+	
+	if (!e.target.classList.contains('pixel')) return;
+	
+	if (currentOpacity > 1) return;
+	e.target.style.opacity = initialOpacity += currentOpacity;
 }
+
+canvas.addEventListener('mouseover', paintIsh);
