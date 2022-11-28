@@ -6,16 +6,62 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;700&family=Prompt:wght@100;200;300&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css">
 	<script defer src="js/script.js"></script>
 </head>
 
 <body>
-	<main>
-		<div id="canvas">
+	<header>
+		<h1>paintIsh</h1>
+	</header>
+	<div id="center-page">
+		<main>
+			<div id="canvas">
+			</div>
+		</main>
+		<aside>
+			<div id="customize-card">
+				<h2>Customize</h2>
+				<div id="canvas-size-container" class="setting">
+					<label for="head">Dimensions:</label>
+					<input type="range" id="canvas-size" name="canvas-size" value="16">
+					<div id="range-size">(16 x 16)</div>
+				</div>
+				<div class="setting">
+					<label for="head">Theme:</label>
+					<select name="theme-select" id="theme-select">
+						<option value="light" selected>Light</option>
+						<option value="dark">Dark</option>
+						<option value="zima">Zima</option>
 
+					</select>
+				</div>
+				<div class="setting">
+					<label for="head">Pixel Color:</label>
+					<input type="color" id="color-pixels" name="color-pixels" value="#663399">
+				</div>
+				<button>CLEAR</button>
+				<!-- <button>TOGGLE ERASER</button> -->
+				<!-- <button>TOGGLE SHADING</button> -->
+				<!-- <button>TOGGLE GRID LINES</button> -->
+			</div>
+		</aside>
+	</div>
+	<footer>
+		<div id="footer-center">
+			<p>
+				© 2022 Cyclone Studios™. All Rights Reserved
+			</p>
 		</div>
-	</main>
+
+		<div id="cyclone-container">
+			<p>powered by:</p>
+			<img src="assets/images/logo-cycloneStudios.png" alt="Cyclone Studios">
+		</div>
+	</footer>
 </body>
 
 </html>

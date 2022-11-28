@@ -23,8 +23,8 @@ function paintIsh(e) {
 	let initialOpacity = 0.2;
 	
 	if (!e.target.classList.contains('pixel')) return;
-	
-	if (currentOpacity > 1) return;
+	if (currentOpacity === 1) return;
+
 	e.target.style.opacity = initialOpacity += currentOpacity;
 }
 

@@ -10,12 +10,52 @@
 
 ::selection {
   color: coral;
-  background-color: rebeccapurple;
+  background-color: var(--color-rebecca-purple);
 }
 
 /* ! :root */
-/* :root {
-} */
+:root {
+  /* theme customizations */
+  --color-background: var(--color-purple-rain);
+  --color-canvas: var(--color-hot-pink);
+  --color-card-background: var(--color-aqua);
+  --color-card-shadow: var(--color-rebecca-purple);
+  --color-header: var(--color-cream);
+  --color-pixel: var(--color-cream);
+  --color-text: var(--color-cream);
+
+  /* theme color/image options */
+  --color-cream: #FEFEDF;
+  --color-purple-rain:#8F6BC3;
+  --color-aqua: #00C9A8;
+  --color-rebecca-purple: #663399;
+  --color-hot-pink: hotpink;
+  --color-cool-blue: #6F87DE;
+  --color-dark-purple: #210956;
+  --color-zima-blue: #16B8F3;
+  --image-space: url('../assets/images/theme-zima-blue.jpg') center / cover no-repeat;
+
+  /* Puck-Man */
+	--color-blinky: #e91113;
+	--color-clyde: #fe8b0d;
+	--color-funky: #7fff00;
+	--color-inky: #01f0ef; 
+	--color-pacman: #ffea54;
+	--color-pinky: #dc80b1;
+	--color-sue: #9d199d;
+}
+
+/* * reset */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
 
 *,
 *::before,
@@ -28,38 +68,254 @@ html {
 }
 
 body {
-  background-color: #B485D8;
-  color: #FFFCEF;
-  display: grid;
-  font-family: 'Gosha Sans Regular';
+  background: var(--color-background);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 100;
+  height: 100vh;
+  justify-content: space-between;
   line-height: 1.5;
-  margin: 0;
-  min-height: 100vh;
-  place-items: center;
 }
 
-main {
+header {
+  padding: 11px 21px;
+}
+
+header h1 {
+  color: var(--color-header);
+  font-weight: 100;
+  position: relative;
+  text-shadow: 0 0 11px;
+  width: max-content;
+}
+
+header h1::before {
+  content: '';
+  background: var(--color-header);
+  bottom: 0;
+  box-shadow: 0 0 3px;
+  height: 0.5px;
+  left: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 380ms ease-in-out;
+  width: 100%;
+} 
+
+header h1:hover::before {
+  transform: scaleX(1);
+} 
+
+#center-page {
   display: grid;
+  grid-template-areas: 'aside main main';
+}
+
+#center-page aside {
+  align-items: center;
+  display: grid;
+  flex-direction: column;
+  grid-area: aside;
+  justify-content: right;
+}
+
+#center-page aside #customize-card {
+  background: var(--color-card-background);
+  border-radius: 55px 11px 55px 11px;
+  box-shadow: 0 0 18px var(--color-card-shadow);
+  color: black;
+  display: flex;
+  flex-direction: column;
+  padding: 33px;
+}
+
+#center-page aside #customize-card h2 {
+  align-self: center;
+  color: var(--color-header);
+  text-shadow: 0 0 3px;
+}
+
+#center-page aside #customize-card .setting {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+}
+
+#center-page aside #customize-card #canvas-size-container {
+  margin-bottom: 11px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#center-page aside #customize-card label {
+  font-size: 1.125rem;
+}
+
+#center-page aside #customize-card select {
+  font-family: 'prompt', sans-serif;
+  background: var(--color-cream);
+  padding: 2px 11px;
+  margin-left: 11px;
+  border: 1px solid rebeccapurple;
+  border-radius: 11px;
+}
+
+#center-page aside #customize-card input[type="color"] {
+  appearance: none;
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+#center-page aside #customize-card button {
+  display: block;
+  width: max-content;
+}
+
+#center-page main {
+  display: grid;
+  grid-area: main;
   place-items: center;
 }
 
-#canvas {
-  border: 5px solid rgb(22, 184, 243);
+#center-page main #canvas {
+  border: 3px solid var(--color-canvas);
+  border-radius: 11px;
+  box-shadow: 0 0 18px var(--color-canvas);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
   /* get this property value via JS to make bigger pixels */
+  height: 410px;
   width: 410px;
 }
 
 .pixel-border {
-  border: 1px solid rgb(22, 184, 243);
-  height: 25px;
-  width: 25px;
+  border: 1px solid var(--color-canvas);
 }
 
 .pixel {
-  background: rgb(22, 184, 243);
-  opacity: 0;
+  background: var(--color-pixel);
   height: 100%;
+  opacity: 0;
+  position: relative;
   width: 100%;
 }
+
+/* ! ⬇️ for :hover when click & hold is set up ⬇️*/
+/* .pixel::before {
+  background: url('../assets/images/logo-cyclone.webp') center / contain no-repeat;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: inherit;
+  width: inherit;
+} */
+
+/* * 
+	*┌─────────────────────────────────────────────────────────────────────────┐
+	*│ |FOOTER|                                                                │
+	*└─────────────────────────────────────────────────────────────────────────┘
+ * */
+
+footer {
+	align-items: center;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	font-family: 'pixeBoy', monospace;
+	justify-content: flex-end;
+	left: auto;
+	position: sticky;
+	right: auto;
+	width: 100vw;
+	z-index: 2;
+}
+
+footer:hover {
+	color: var(--color-blinky);
+}
+
+#footer-center {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	justify-content: center;
+}
+
+#footer-center:active  {
+	margin-bottom: 25px;
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+#footer-center > p {
+	color: #fffce8;
+	transition: all 0.3s ease-in;
+}
+
+#footer-center > p:hover {
+	color: var(--color-funky);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+footer p {
+	margin: 0 0 2px 0;
+}
+
+#cyclone-container {
+	align-items: center;
+	display: flex;
+	filter: drop-shadow(0 0px 3px #fffce8);
+	flex-direction: column;
+	gap: 1px;
+	justify-content: center;
+	opacity: 0.58;
+	padding-bottom: 10px;
+	transition: all 0.8s ease-in;
+}
+
+#cyclone-container:hover {
+	filter: drop-shadow(0 3px 10px #fffce8);
+	margin-top: 50px;
+	opacity: 1;
+	-webkit-transform: translateY(-20px) scale(1.8) rotate(-1080deg);
+	transform: translateY(-20px) scale(1.8) rotate(-1080deg);
+}
+
+#cyclone-container > p {
+	color: var(--color-blinky);
+	height: 0;
+	opacity: 0;
+	text-shadow: 0 0 3px black;
+} 
+
+#cyclone-container:hover > p {
+	color: var(--color-funky);
+	height: initial;
+	opacity: 1;
+}
+
+#cyclone-container > p {
+	font-size: 1.3rem;
+	transition: all 1.3s ease-in-out;
+}
+
+#cyclone-container > img {
+	height: 22px;
+}
+
+#cyclone-container:hover > img {
+	filter: drop-shadow(0 0px 5px #fffce8);
+} 
