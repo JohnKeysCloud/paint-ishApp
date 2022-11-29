@@ -15,7 +15,7 @@
 
 <body>
 	<header>
-		<h1>paintIsh</h1>
+		<h1>sketch</h1>
 	</header>
 	<div id="center-page">
 		<main>
@@ -23,27 +23,37 @@
 			</div>
 		</main>
 		<aside>
-			<div id="customize-card">
-				<h2>Customize</h2>
+			<div id="settings">
+				<h2>Settings</h2>
 				<div id="canvas-size-container" class="setting">
-					<label for="head">Dimensions:</label>
-					<input type="range" id="canvas-size" name="canvas-size" value="16">
-					<div id="range-size">(16 x 16)</div>
+					<label for="slider">Dimensions:</label>
+					<input type="range" id="slider" name="slider" min="1" step="1" max="32" value="16" list="tickmarks">
+					<datalist id="tickmarks">
+						<option value="1">1</option>
+						<option value="8">8</option>
+						<option value="16">16</option>
+						<option value="24">24</option>
+						<option value="32">32</option>
+					</datalist>
+					<div id="slider-output">(16 x 16)</div>
 				</div>
 				<div class="setting">
-					<label for="head">Theme:</label>
-					<select name="theme-select" id="theme-select">
+					<label for="theme-select">Theme:</label>
+					<select name="theme-select" id="theme-select" disabled>
 						<option value="light" selected>Light</option>
 						<option value="dark">Dark</option>
 						<option value="zima">Zima</option>
-
 					</select>
 				</div>
 				<div class="setting">
-					<label for="head">Pixel Color:</label>
-					<input type="color" id="color-pixels" name="color-pixels" value="#663399">
+					<label for="color-pixels">Pixel Color:</label>
+					<input type="color" id="color-pixels" name="color-pixels" value="#FEFEDF">
 				</div>
-				<button>CLEAR</button>
+				<div class="setting">
+					<label for="canvas-background-color">Canvas:</label>
+					<input type="color" id="canvas-background-color" name="color-pixels" value="#896fbe">
+				</div>
+				<button disabled>Start Over</button>
 				<!-- <button>TOGGLE ERASER</button> -->
 				<!-- <button>TOGGLE SHADING</button> -->
 				<!-- <button>TOGGLE GRID LINES</button> -->

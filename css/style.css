@@ -13,9 +13,11 @@
   background-color: var(--color-rebecca-purple);
 }
 
-/* ! :root */
 :root {
-  /* theme customizations */
+  /* ? gridSize */
+  --grid-fraction: repeat(16, 1fr);
+
+  /* ? theme customizations */
   --color-background: var(--color-purple-rain);
   --color-canvas: var(--color-hot-pink);
   --color-card-background: var(--color-aqua);
@@ -24,7 +26,7 @@
   --color-pixel: var(--color-cream);
   --color-text: var(--color-cream);
 
-  /* theme color/image options */
+  /* ? theme color/image options */
   --color-cream: #FEFEDF;
   --color-purple-rain:#8F6BC3;
   --color-aqua: #00C9A8;
@@ -35,7 +37,7 @@
   --color-zima-blue: #16B8F3;
   --image-space: url('../assets/images/theme-zima-blue.jpg') center / cover no-repeat;
 
-  /* Puck-Man */
+  /* ? Puck-Man */
 	--color-blinky: #e91113;
 	--color-clyde: #fe8b0d;
 	--color-funky: #7fff00;
@@ -43,6 +45,7 @@
 	--color-pacman: #ffea54;
 	--color-pinky: #dc80b1;
 	--color-sue: #9d199d;
+
 }
 
 /* * reset */
@@ -80,7 +83,7 @@ body {
 }
 
 header {
-  padding: 11px 21px;
+  padding: 11px 55px;
 }
 
 header h1 {
@@ -122,30 +125,27 @@ header h1:hover::before {
   justify-content: right;
 }
 
-#center-page aside #customize-card {
+#center-page aside #settings {
   background: var(--color-card-background);
   border-radius: 55px 11px 55px 11px;
   box-shadow: 0 0 18px var(--color-card-shadow);
   color: black;
   display: flex;
   flex-direction: column;
-  padding: 33px;
+  padding: 21px 33px 21px 33px;
 }
 
-#center-page aside #customize-card h2 {
+#center-page aside #settings h2 {
   align-self: center;
   color: var(--color-header);
-  text-shadow: 0 0 3px;
 }
 
-#center-page aside #customize-card .setting {
+#center-page aside #settings .setting {
   display: flex;
-  /* flex-direction: column; */
   justify-content: space-between;
-  align-items: center;
 }
 
-#center-page aside #customize-card #canvas-size-container {
+#center-page aside #settings #canvas-size-container {
   margin-bottom: 11px;
   display: flex;
   flex-direction: column;
@@ -153,31 +153,144 @@ header h1:hover::before {
   align-items: center;
 }
 
-#center-page aside #customize-card label {
+#center-page aside #settings #canvas-size-container label {
+  margin-bottom: 5px;
+}
+
+#center-page aside #settings #slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--color-canvas);
+  border-radius: 50%;
+  box-shadow: 0 0 11px var(--color-canvas);
+  height: 5px;
+  margin: 0 0 11px 0;
+  width: 100%;
+}
+
+#center-page aside #settings #slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: url('../assets/images/logo-cyclone.webp') center / contain no-repeat;
+  border-radius: 50%;
+  cursor: pointer;
+  filter: drop-shadow(0 0 1px var(--color-canvas));
+  height: 25px;
+  margin-bottom: 15px;
+  position: relative;
+  width: 25px;
+  z-index: 1;
+} 
+
+#center-page aside #settings #slider::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: url('../assets/images/logo-cyclone.webp') center / contain no-repeat;
+  border-radius: 50%;
+  cursor: pointer;
+  filter: drop-shadow(0 0 1px var(--color-canvas));
+  height: 25px;
+  margin-bottom: 15px;
+  position: relative;
+  width: 25px;
+  z-index: 1;
+}
+
+#canvas-size-container datalist {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 0;
+  width: 100%;
+}
+
+#canvas-size-container datalist option {
+  display: flex;
+  font-family: 'pixeBoy', monospace;
+  justify-content: center;
+  line-height: 10px;
+  padding: 0;
+  position: relative;
+  text-shadow: 0 0 8px var(--color-cream);
+  width: 20%;
+  z-index: 0;
+}
+
+#canvas-size-container datalist option::before {
+  content: '';
+  background: var(--color-cream);
+  box-shadow: 0 0 3px var(--color-canvas);
+  border-radius: 8px;
+  bottom: 28.8px;
+  height: 8px;
+  left: 50%; 
+  position: absolute;
+  transform: translateX(-50%);
+  width: 1px;
+  z-index: -1;
+}
+
+#canvas-size-container datalist option:first-child{
+  -webkit-transform: translateX(-2.4px);
+  transform: translateX(-2.4px);
+}
+
+#canvas-size-container datalist option:nth-child(2) {
+  -webkit-transform: translateX(-4.2px);
+  transform: translateX(-4.2px);
+}
+
+
+#canvas-size-container datalist option:nth-child(3) {
+  -webkit-transform: translateX(-2px);
+  transform: translateX(-2px);
+}
+
+#canvas-size-container datalist option:nth-child(4) {
+  -webkit-transform: translateX(0.1px);
+  transform: translateX(0.1px);
+}
+
+#canvas-size-container datalist option:last-child {
+  -webkit-transform: translateX(2.4px);
+  transform: translateX(2.4px);
+}
+
+#center-page aside #settings label {
   font-size: 1.125rem;
 }
 
-#center-page aside #customize-card select {
+#center-page aside #settings #theme-select {
   font-family: 'prompt', sans-serif;
   background: var(--color-cream);
   padding: 2px 11px;
+  margin-bottom: 18px;
   margin-left: 11px;
-  border: 1px solid rebeccapurple;
+  border: 2px ridge silver;
   border-radius: 11px;
 }
 
-#center-page aside #customize-card input[type="color"] {
+#center-page aside #settings input[type="color"] {
   appearance: none;
   background-color: transparent;
   padding: 0;
   border: 0;
   height: 30px;
+  margin-bottom: 18px;
   width: 30px;
   border-radius: 50%;
 }
 
-#center-page aside #customize-card button {
+#center-page aside #settings button {
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--color-cream);
+  border-radius: 18px;
+  box-shadow: 0 0 3px var(--color-canvas);
+  border: 2px ridge silver;
   display: block;
+  font-family: 'prompt', sans-serif;
+  margin-inline: auto;
+  padding: 8px 21px;
   width: max-content;
 }
 
@@ -188,12 +301,11 @@ header h1:hover::before {
 }
 
 #center-page main #canvas {
-  border: 3px solid var(--color-canvas);
+  border: 5px solid var(--color-canvas);
   border-radius: 11px;
   box-shadow: 0 0 18px var(--color-canvas);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
-  /* get this property value via JS to make bigger pixels */
+  grid-template-columns: repeat(var(--grid-fraction), 1fr);
   height: 410px;
   width: 410px;
 }
