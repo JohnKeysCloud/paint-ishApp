@@ -2,13 +2,14 @@
 <html lang="en">
 
 <head>
-	<title>paintIsh</title>
+	<title>sketch</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;700&family=Prompt:wght@100;200;300&display=swap" rel="stylesheet">
+	<link rel="icon" href="assets/images/logo-cyclone.webp" type="image/webp">
 	<link rel="stylesheet" href="css/style.css">
 	<script defer src="js/script.js"></script>
 </head>
@@ -19,7 +20,7 @@
 	</header>
 	<div id="center-page">
 		<main>
-			<div id="canvas">
+			<div id="canvas" data-sketch-method="pen">
 			</div>
 		</main>
 		<aside>
@@ -53,10 +54,13 @@
 					<label for="canvas-background-color">Canvas:</label>
 					<input type="color" id="canvas-background-color" name="color-pixels" value="#896fbe">
 				</div>
-				<button disabled>Start Over</button>
-				<!-- <button>TOGGLE ERASER</button> -->
-				<!-- <button>TOGGLE SHADING</button> -->
-				<!-- <button>TOGGLE GRID LINES</button> -->
+
+				<div id="toggles">
+					<button disabled id="erasing-toggle">Eraser</button>
+					<button id="shading-toggle"><span class="gradient-text">Shade</span></button>
+				</div>
+
+				<button id="start-over-btn">Start Over</button>
 			</div>
 		</aside>
 	</div>
