@@ -6,11 +6,12 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="color-scheme" content="light dark">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="assets/images/logo-cyclone.webp" type="image/webp">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;700&family=Prompt:wght@100;200;300&display=swap" rel="stylesheet">
-	<link rel="icon" href="assets/images/logo-cyclone.webp" type="image/webp">
-	<link rel="stylesheet" href="css/style.css">
 	<script defer src="js/script.js"></script>
 </head>
 
@@ -40,7 +41,7 @@
 				</div>
 				<div class="setting">
 					<label for="theme-select">Theme:</label>
-					<select name="theme-select" id="theme-select" disabled>
+					<select name="theme-select" id="theme-select">
 						<option value="light" selected>Light</option>
 						<option value="dark">Dark</option>
 						<option value="zima">Zima</option>
@@ -48,7 +49,7 @@
 				</div>
 				<div class="setting">
 					<label for="color-pixels">Pixel Color:</label>
-					<input type="color" id="color-pixels" name="color-pixels" value="#FFFF00">
+					<input type="color" id="color-pixels" name="color-pixels" value="#FFFFC9">
 				</div>
 				<div class="setting">
 					<label for="canvas-background-color">Canvas:</label>
@@ -56,8 +57,8 @@
 				</div>
 
 				<div id="toggles">
+					<button id="erasing-toggle"><span id="eraser-text">Eraser</span></button>
 					<button id="shading-toggle"><span class="gradient-text">Shade</span></button>
-					<button id="erasing-toggle">Eraser</button>
 				</div>
 
 				<button id="start-over-btn">Start Over</button>

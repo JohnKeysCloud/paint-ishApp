@@ -9,68 +9,6 @@
   }
 }
 
-/* ! via animista.net */
-@-webkit-keyframes jello-horizontal {
-  0% {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1);
-  }
-  30% {
-    -webkit-transform: scale3d(1.25, 0.75, 1);
-            transform: scale3d(1.25, 0.75, 1);
-  }
-  40% {
-    -webkit-transform: scale3d(0.75, 1.25, 1);
-            transform: scale3d(0.75, 1.25, 1);
-  }
-  50% {
-    -webkit-transform: scale3d(1.15, 0.85, 1);
-            transform: scale3d(1.15, 0.85, 1);
-  }
-  65% {
-    -webkit-transform: scale3d(0.95, 1.05, 1);
-            transform: scale3d(0.95, 1.05, 1);
-  }
-  75% {
-    -webkit-transform: scale3d(1.05, 0.95, 1);
-            transform: scale3d(1.05, 0.95, 1);
-  }
-  100% {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1);
-  }
-}
-@keyframes jello-horizontal {
-  0% {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1);
-  }
-  30% {
-    -webkit-transform: scale3d(1.25, 0.75, 1);
-            transform: scale3d(1.25, 0.75, 1);
-  }
-  40% {
-    -webkit-transform: scale3d(0.75, 1.25, 1);
-            transform: scale3d(0.75, 1.25, 1);
-  }
-  50% {
-    -webkit-transform: scale3d(1.15, 0.85, 1);
-            transform: scale3d(1.15, 0.85, 1);
-  }
-  65% {
-    -webkit-transform: scale3d(0.95, 1.05, 1);
-            transform: scale3d(0.95, 1.05, 1);
-  }
-  75% {
-    -webkit-transform: scale3d(1.05, 0.95, 1);
-            transform: scale3d(1.05, 0.95, 1);
-  }
-  100% {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1);
-  }
-}
-
 @font-face {
   font-family: 'Gosha Sans Regular';
   src: url(../assets/fonts/GoshaSansRegular.woff2);
@@ -95,16 +33,19 @@
   --color-canvas: var(--color-hot-pink);
   --color-card-background: var(--color-aqua);
   --color-card-shadow: var(--color-rebecca-purple);
+  --color-settings-border: silver;
   --color-header: var(--color-cream);
-  --color-pixel: var(--color-pacman);
-  --color-text: var(--color-cream);
+  --color-pixel: var(--color-cream);
+  --color-canvas-background: var(--color-purple-rain);
+  --color-text: black;
+  --color-toggle-shadow: var(--color-canvas);
 
   /* ? theme color/image options */
-  --color-cream: #FEFEDF;
+  --color-cream: #FFFFC9;
   --color-purple-rain:#8F6BC3;
   --color-aqua: #00C9A8;
   --color-rebecca-purple: #663399;
-  --color-hot-pink: hotpink;
+  --color-hot-pink: #ff69b4;
   --color-cool-blue: #6F87DE;
   --color-dark-purple: #210956;
   --color-zima-blue: #16B8F3;
@@ -118,7 +59,6 @@
 	--color-pacman: #ffea54;
 	--color-pinky: #dc80b1;
 	--color-sue: #9d199d;
-
 }
 
 /* * reset * */
@@ -152,6 +92,7 @@ h6 {
 
 html {
   box-sizing: border-box;
+  color-scheme: light dark;
 }
 
 body {
@@ -217,6 +158,14 @@ aside #settings {
   display: flex;
   flex-direction: column;
   padding: 21px 33px 21px 33px;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 
 aside #settings h2 {
@@ -225,8 +174,10 @@ aside #settings h2 {
 }
 
 aside #settings .setting {
+  align-items: center;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 18px;
 }
 
 aside #settings #canvas-size-container {
@@ -286,6 +237,7 @@ aside #canvas-size-container datalist {
 }
 
 aside #canvas-size-container datalist option {
+  color: var(--color-text);
   display: flex;
   font-family: 'pixeBoy', monospace;
   justify-content: center;
@@ -338,30 +290,41 @@ aside #canvas-size-container datalist option:last-child {
   transform: translateX(2.4px);
 }
 
-aside label {
-  font-size: 1.125rem;
+aside #canvas-size-container #slider-output {
+  color: var(--color-text);
+}
 
+aside label {
+  color: var(--color-text);
+  font-size: 1.125rem;
 }
 
 aside input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   background-color: transparent;
+  border: none;
   padding: 0;
-  border: 0;
-  height: 30px;
-  margin-bottom: 18px;
-  width: 30px;
-  border-radius: 50%;
+  height: 38px;
+  width: 38px;
+}
+
+aside input[type="color"]::-webkit-color-swatch,
+aside input[type="color"]::-webkit-color-swatch  {
+  border: 3px ridge var(--color-settings-border);
+  border-radius: 12px;
+
 }
 
 aside #theme-select {
-  font-family: 'prompt', sans-serif;
   background: var(--color-cream);
-  padding: 2px 11px;
-  margin-bottom: 18px;
-  margin-left: 11px;
-  border: 2px ridge silver;
+  border: 3px ridge var(--color-settings-border);
   border-radius: 11px;
+  color: black;
+  font-family: 'prompt', sans-serif;
+  margin-left: 18px;
+  padding: 2px 11px;
 }
 
 aside #toggles {
@@ -377,9 +340,11 @@ aside button {
   -webkit-appearance: none;
   appearance: none;
   border: none;
+  color: black;
   cursor: pointer;
   font-family: 'prompt', sans-serif;
   font-weight: 300;
+  font-size: 0.8313rem;
   margin-inline: auto;
   position: relative;
   width: max-content;
@@ -387,19 +352,27 @@ aside button {
 
 aside #erasing-toggle,
 aside #shading-toggle {
-  background: #fbb3b3;
   border-radius: 50%;
-  box-shadow: 0 3px var(--color-cream), inset 0 3px var(--color-pinky);
-  height: 55px;
-  width: 55px; 
+  height: 60px;
+  width: 60px; 
 }
 
 aside #shading-toggle {
   background: black;
   border-radius: 50%;
   box-shadow: 0 3px var(--color-cream), inset 0 3px #555555;
-  height: 55px;
-  width: 55px; 
+}
+
+aside #erasing-toggle {
+  background: #ffb5b5;
+  box-shadow: 0 3px var(--color-cream), inset 0 3px pink;
+}
+
+aside #erasing-toggle span {
+  pointer-events: none;
+  position: relative;
+  transform: scale(1.1);
+  transition: all 380ms ease-in-out;
 }
 
 aside #shading-toggle.enabled,
@@ -410,7 +383,7 @@ aside #erasing-toggle.enabled {
 aside #shading-toggle::before,
 aside #erasing-toggle::before {
   border-radius: 50%;
-  box-shadow: 0 0 11px 8px var(--color-cream);
+  box-shadow: 0 0 11px 8px var(--color-toggle-shadow);
   content: '';
   position: absolute;
   height: 100%;
@@ -429,12 +402,12 @@ aside #erasing-toggle.enabled::before {
 aside #shading-toggle span {
   pointer-events: none;
   position: relative;
-  transform: scale(1.1);
+  transform: scale(1);
   transition: all 380ms ease-in-out;
 }
 
 aside #shading-toggle.enabled span {
-  transform: scale(1);
+  transform: scale(0.9);
 }
 
 aside #shading-toggle span::before {
@@ -453,25 +426,44 @@ aside #shading-toggle.enabled span::before {
   opacity: 0;
 }
 
-aside  #start-over-btn {
-  background-color: #CFCFC4;
-  border-bottom: 5px ridge #8c8c8c;
+aside #start-over-btn {
+  background-color: #ababa1;
   border-radius: 33px;
-  box-shadow: inset 0 5px 8px white;
+  box-shadow: inset 0 15px 8px var(--color-cream);
   padding: 5px 18px;
+  position: relative;
 }
 
-aside  #start-over-btn::before {
-  content: '';
-  bottom: 0;
-  left: 0;
+aside #start-over-btn::before {
+  background-color: #CFCFC4;
+  border-bottom: 5px ridge var(--color-cream);
+  border-radius: 33px;
+  box-shadow: inset 0 3px 8px white;
+  content: 'Start Over';
+  height: 100%;
+  opacity: 1;
+  padding: 5px 18px;
   position: absolute;
+  width: 100%;
+  -webkit-transition: opacity 0.250s ease-out;
+  transition: opacity 0.250s ease-out;
+  top: 0;
+  left: 0;
 }
 
-aside  #start-over-btn.clicked {
-  -webkit-animation: jello-horizontal 380ms both;
-  animation: jello-horizontal 380ms both;
+aside #start-over-btn.clicked::before {
+  opacity: 0;
+}
 
+@keyframes start-over {
+  from {
+    transform: translateY(2px);
+  } 
+}
+
+aside #start-over-btn.clicked {
+  -webkit-animation: start-over 0.5s ease-in;
+  animation: start-over 0.5s ease-in;
 }
 
 main {
@@ -481,13 +473,14 @@ main {
 }
 
 main #canvas {
+  background-color: var(--color-canvas-background);
   border: 5px solid var(--color-canvas);
   border-radius: 11px;
   box-shadow: 0 0 18px var(--color-canvas);
   display: grid;
   grid-template-columns: repeat(var(--grid-fraction), 1fr);
-  height: 410px;
-  width: 410px;
+  height: 500px;
+  width: 500px;
 }
 
 /* * injectedViaJS * */
@@ -558,7 +551,7 @@ footer:hover {
 }
 
 #footer-center > p {
-	color: #fffce8;
+	color: var(--color-cream);
 	transition: all 0.3s ease-in;
 }
 
@@ -617,3 +610,16 @@ footer p {
 #cyclone-container:hover > img {
 	filter: drop-shadow(0 0px 5px #fffce8);
 } 
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  /* ? theme customizations */
+  --color-background: linear-gradient(to bottom right, #25112a, black);
+
+  --color-canvas-background: rgb(0, 0, 0);
+  --color-card-background: black;
+  --color-card-shadow: #FF7897;
+  --color-text: var(--color-cream);
+  --color-settings-border: rgb(111, 111, 111);
+  }
+}
