@@ -9,6 +9,68 @@
   }
 }
 
+/* ! via animista.net */
+@-webkit-keyframes jello-horizontal {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+            transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+            transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+            transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+            transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes jello-horizontal {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+            transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+            transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+            transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+            transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
+
 @font-face {
   font-family: 'Gosha Sans Regular';
   src: url(../assets/fonts/GoshaSansRegular.woff2);
@@ -220,8 +282,6 @@ aside #canvas-size-container #slider::-moz-range-thumb {
 
 aside #canvas-size-container datalist {
   display: flex;
-  justify-content: space-between;
-  padding: 0px 0;
   width: 100%;
 }
 
@@ -230,6 +290,7 @@ aside #canvas-size-container datalist option {
   font-family: 'pixeBoy', monospace;
   justify-content: center;
   line-height: 10px;
+  margin-top: 8px;
   padding: 0;
   position: relative;
   text-shadow: 0 0 8px var(--color-cream);
@@ -245,6 +306,7 @@ aside #canvas-size-container datalist option::before {
   bottom: 28.8px;
   height: 8px;
   left: 50%; 
+  margin-bottom: 8px;
   position: absolute;
   transform: translateX(-50%);
   width: 1px;
@@ -278,6 +340,7 @@ aside #canvas-size-container datalist option:last-child {
 
 aside label {
   font-size: 1.125rem;
+
 }
 
 aside input[type="color"] {
@@ -305,25 +368,21 @@ aside #toggles {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 18px;
+  margin-bottom: 21px;
+  transition: all 380ms ease-in-out;
   width: 100%;
 }
 
 aside button {
   -webkit-appearance: none;
   appearance: none;
-  background: white;
-  border-radius: 18px;
-  /* box-shadow: 0 0 3px var(--color-canvas); */
   border: none;
   cursor: pointer;
-  display: inline-block;
   font-family: 'prompt', sans-serif;
   font-weight: 300;
   margin-inline: auto;
   position: relative;
   width: max-content;
-  
 }
 
 aside #erasing-toggle,
@@ -341,16 +400,17 @@ aside #shading-toggle {
   box-shadow: 0 3px var(--color-cream), inset 0 3px #555555;
   height: 55px;
   width: 55px; 
-  transition: all 380ms ease-in-out;
 }
 
-aside #shading-toggle.enabled {
-  transform: scale(0.97);
+aside #shading-toggle.enabled,
+aside #erasing-toggle.enabled {
+  transform: scale(0.95);
 }
 
-aside #shading-toggle::before {
+aside #shading-toggle::before,
+aside #erasing-toggle::before {
   border-radius: 50%;
-  box-shadow: 0 0 3px 3px black;
+  box-shadow: 0 0 11px 8px var(--color-cream);
   content: '';
   position: absolute;
   height: 100%;
@@ -361,7 +421,8 @@ aside #shading-toggle::before {
   width: 100%;
 }
 
-aside #shading-toggle.enabled::before {
+aside #shading-toggle.enabled::before,
+aside #erasing-toggle.enabled::before {
   opacity: 1;
 } 
 
@@ -369,7 +430,7 @@ aside #shading-toggle span {
   pointer-events: none;
   position: relative;
   transform: scale(1.1);
-  transition: all 222ms ease-in-out;
+  transition: all 380ms ease-in-out;
 }
 
 aside #shading-toggle.enabled span {
@@ -384,7 +445,7 @@ aside #shading-toggle span::before {
   position: absolute;
   text-shadow: 0 0 5px white;
   top: 0;
-  transition: opacity 555ms ease-in-out;
+  transition: opacity 380ms ease-in-out;
   width: 100%;
 }
 
@@ -392,9 +453,26 @@ aside #shading-toggle.enabled span::before {
   opacity: 0;
 }
 
-/* aside  #start-over-btn {
+aside  #start-over-btn {
+  background-color: #CFCFC4;
+  border-bottom: 5px ridge #8c8c8c;
+  border-radius: 33px;
+  box-shadow: inset 0 5px 8px white;
+  padding: 5px 18px;
+}
 
-} */
+aside  #start-over-btn::before {
+  content: '';
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+
+aside  #start-over-btn.clicked {
+  -webkit-animation: jello-horizontal 380ms both;
+  animation: jello-horizontal 380ms both;
+
+}
 
 main {
   display: grid;

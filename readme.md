@@ -1,4 +1,4 @@
-# paintIsh
+# sketch
 <!-- [IMG-HERE](LINK TO DEMO HERE) -->
 <a href="https://www.theodinproject.com/lessons/foundations-rock-paper-scissors" target="_blank">The Odin Project</a> called this an etch-a-sketch… I disagree! It's more 'paintish' 🙃. I am currently designing and programming it using vanilla HTML, CSS & JavaScript for them.
 
