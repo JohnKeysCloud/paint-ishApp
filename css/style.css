@@ -9,6 +9,19 @@
   }
 }
 
+@-webkit-keyframes start-over {
+  from {
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+  } 
+}
+@keyframes start-over {
+  from {
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+  } 
+}
+
 @font-face {
   font-family: 'Gosha Sans Regular';
   src: url(../assets/fonts/GoshaSansRegular.woff2);
@@ -31,23 +44,23 @@
   /* ? theme customizations */
   --color-background: var(--color-purple-rain);
   --color-canvas: var(--color-hot-pink);
+  --color-canvas-background: var(--color-purple-rain);
   --color-card-background: var(--color-aqua);
   --color-card-shadow: var(--color-rebecca-purple);
-  --color-settings-border: silver;
   --color-header: var(--color-cream);
   --color-pixel: var(--color-cream);
-  --color-canvas-background: var(--color-purple-rain);
+  --color-settings-border: silver;
   --color-text: black;
   --color-toggle-shadow: var(--color-canvas);
 
-  /* ? theme color/image options */
-  --color-cream: #FFFFC9;
-  --color-purple-rain:#8F6BC3;
+  /* ? custom color/image options */
   --color-aqua: #00C9A8;
-  --color-rebecca-purple: #663399;
-  --color-hot-pink: #ff69b4;
   --color-cool-blue: #6F87DE;
+  --color-cream: #FFFFC9;
   --color-dark-purple: #210956;
+  --color-hot-pink: #ff69b4;
+  --color-purple-rain:#8F6BC3;
+  --color-rebecca-purple: #663399;
   --color-zima-blue: #16B8F3;
   --image-space: url('../assets/images/theme-zima-blue.jpg') center / cover no-repeat;
 
@@ -77,8 +90,8 @@ h6 {
   background: linear-gradient(to left, rgb(55, 55, 55), white, silver, rgb(255, 255, 255));
   background-clip: text;
   display: inline-block;
-  padding: 0;
   margin-inline: auto;
+  padding: 0;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   width: max-content;
@@ -92,7 +105,6 @@ h6 {
 
 html {
   box-sizing: border-box;
-  color-scheme: light dark;
 }
 
 body {
@@ -120,20 +132,23 @@ header h1 {
 }
 
 header h1::before {
-  content: '';
   background: var(--color-header);
   bottom: 0;
   box-shadow: 0 0 3px;
+  content: '';
   height: 0.5px;
   left: 0;
   position: absolute;
+  -webkit-transform: scaleX(0);
   transform: scaleX(0);
   transform-origin: left;
+  -webkit-transition: transform 380ms ease-in-out;
   transition: transform 380ms ease-in-out;
   width: 100%;
 } 
 
 header h1:hover::before {
+  -webkit-transform: scaleX(1);
   transform: scaleX(1);
 } 
 
@@ -181,11 +196,11 @@ aside #settings .setting {
 }
 
 aside #settings #canvas-size-container {
-  margin-bottom: 11px;
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  margin-bottom: 11px;
 }
 
 aside #settings #canvas-size-container label {
@@ -193,6 +208,7 @@ aside #settings #canvas-size-container label {
 }
 
 aside #canvas-size-container #slider {
+  -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
   background: var(--color-canvas);
@@ -204,6 +220,7 @@ aside #canvas-size-container #slider {
 }
 
 aside #canvas-size-container #slider::-webkit-slider-thumb {
+  -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
   background: url('../assets/images/logo-cyclone.webp') center / contain no-repeat;
@@ -218,6 +235,7 @@ aside #canvas-size-container #slider::-webkit-slider-thumb {
 } 
 
 aside #canvas-size-container #slider::-moz-range-thumb {
+  -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
   background: url('../assets/images/logo-cyclone.webp') center / contain no-repeat;
@@ -251,15 +269,16 @@ aside #canvas-size-container datalist option {
 }
 
 aside #canvas-size-container datalist option::before {
-  content: '';
   background: var(--color-cream);
-  box-shadow: 0 0 3px var(--color-canvas);
   border-radius: 8px;
   bottom: 28.8px;
+  box-shadow: 0 0 3px var(--color-canvas);
+  content: '';
   height: 8px;
   left: 50%; 
   margin-bottom: 8px;
   position: absolute;
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   width: 1px;
   z-index: -1;
@@ -300,8 +319,8 @@ aside label {
 }
 
 aside input[type="color"] {
-  -webkit-appearance: none;
   -moz-appearance: none;
+  -webkit-appearance: none;
   appearance: none;
   background-color: transparent;
   border: none;
@@ -314,7 +333,6 @@ aside input[type="color"]::-webkit-color-swatch,
 aside input[type="color"]::-webkit-color-swatch  {
   border: 3px ridge var(--color-settings-border);
   border-radius: 12px;
-
 }
 
 aside #theme-select {
@@ -337,6 +355,7 @@ aside #toggles {
 }
 
 aside button {
+  -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
   border: none;
@@ -371,12 +390,14 @@ aside #erasing-toggle {
 aside #erasing-toggle span {
   pointer-events: none;
   position: relative;
+  -webkit-transform: scale(1.1);
   transform: scale(1.1);
   transition: all 380ms ease-in-out;
 }
 
 aside #shading-toggle.enabled,
 aside #erasing-toggle.enabled {
+  -webkit-transform: scale(0.95);
   transform: scale(0.95);
 }
 
@@ -385,10 +406,10 @@ aside #erasing-toggle::before {
   border-radius: 50%;
   box-shadow: 0 0 11px 8px var(--color-toggle-shadow);
   content: '';
-  position: absolute;
   height: 100%;
   left: 0;
   opacity: 0;
+  position: absolute;
   top: 0;
   transition: 380ms ease-in-out;
   width: 100%;
@@ -402,11 +423,14 @@ aside #erasing-toggle.enabled::before {
 aside #shading-toggle span {
   pointer-events: none;
   position: relative;
+  -webkit-transform: scale(1);
   transform: scale(1);
+  -webkit-transition: all 380ms ease-in-out;
   transition: all 380ms ease-in-out;
 }
 
 aside #shading-toggle.enabled span {
+  -webkit-transform: scale(0.9);
   transform: scale(0.9);
 }
 
@@ -453,12 +477,6 @@ aside #start-over-btn::before {
 
 aside #start-over-btn.clicked::before {
   opacity: 0;
-}
-
-@keyframes start-over {
-  from {
-    transform: translateY(2px);
-  } 
 }
 
 aside #start-over-btn.clicked {
@@ -552,6 +570,7 @@ footer:hover {
 
 #footer-center > p {
 	color: var(--color-cream);
+	-webkit-transition: all 0.3s ease-in;
 	transition: all 0.3s ease-in;
 }
 
@@ -574,6 +593,7 @@ footer p {
 	justify-content: center;
 	opacity: 0.58;
 	padding-bottom: 10px;
+	-webkit-transition: all 0.8s ease-in;
 	transition: all 0.8s ease-in;
 }
 
@@ -600,6 +620,7 @@ footer p {
 
 #cyclone-container > p {
 	font-size: 1.3rem;
+	-webkit-transition: all 1.3s ease-in-out;
 	transition: all 1.3s ease-in-out;
 }
 
@@ -615,7 +636,6 @@ footer p {
   :root {
   /* ? theme customizations */
   --color-background: linear-gradient(to bottom right, #25112a, black);
-
   --color-canvas-background: rgb(0, 0, 0);
   --color-card-background: black;
   --color-card-shadow: #FF7897;

@@ -7,6 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="color-scheme" content="light dark">
+	<meta name="description" content="A pixel art sketch application.">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="assets/images/logo-cyclone.webp" type="image/webp">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,14 +20,17 @@
 	<header>
 		<h1>sketch</h1>
 	</header>
+
 	<div id="center-page">
 		<main>
 			<div id="canvas" data-sketch-method="pen">
 			</div>
 		</main>
+
 		<aside>
 			<div id="settings">
 				<h2>Settings</h2>
+
 				<div id="canvas-size-container" class="setting">
 					<label for="slider">Dimensions:</label>
 					<input type="range" id="slider" name="slider" min="1" step="1" max="32" value="16" list="tickmarks">
@@ -39,6 +43,7 @@
 					</datalist>
 					<div id="slider-output">(16 x 16)</div>
 				</div>
+
 				<div class="setting">
 					<label for="theme-select">Theme:</label>
 					<select name="theme-select" id="theme-select">
@@ -47,10 +52,12 @@
 						<option value="zima">Zima</option>
 					</select>
 				</div>
+
 				<div class="setting">
 					<label for="color-pixels">Pixel Color:</label>
 					<input type="color" id="color-pixels" name="color-pixels" value="#FFFFC9">
 				</div>
+
 				<div class="setting">
 					<label for="canvas-background-color">Canvas:</label>
 					<input type="color" id="canvas-background-color" name="color-pixels" value="#896fbe">
@@ -65,6 +72,7 @@
 			</div>
 		</aside>
 	</div>
+
 	<footer>
 		<div id="footer-center">
 			<p>
