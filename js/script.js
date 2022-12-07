@@ -141,12 +141,18 @@ function switchTheme(e) {
 
 		root.style.setProperty('--color-background', 'var(--color-purple-rain)');
 		root.style.setProperty('--color-canvas', 'var(--color-hot-pink)');
+		root.style.setProperty('--color-canvas-background', 'var(--color-purple-rain)');
 		root.style.setProperty('--color-card-background', 'var(--color-aqua)');
 		root.style.setProperty('--color-card-shadow', 'var(--color-rebecca-purple)');
-		root.style.setProperty('--color-settings-border', 'silver');
-		root.style.setProperty('--color-canvas-background', 'var(--color-purple-rain)');
-		root.style.setProperty('--color-text', 'black');
 		root.style.setProperty('--color-pixel', 'var(--color-cream');
+		root.style.setProperty('--color-select-background', 'var(--color-cream)');
+		root.style.setProperty('--color-select-text', 'black');
+		root.style.setProperty('--color-settings-border', 'silver');
+		root.style.setProperty('--color-start-over-btn', '#CFCFC4');
+		root.style.setProperty('--color-start-over-btn-2', '#ababa1');
+		root.style.setProperty('--color-start-over-txt', 'black');
+		root.style.setProperty('--color-text', 'black');
+
 	} else if (e.target.value === 'dark') {
 		canvasColorPicker.setAttribute('value', '#000000');
 		pixelColorInput.setAttribute('value', '#FFFFC9');
@@ -157,9 +163,13 @@ function switchTheme(e) {
 		root.style.setProperty('--color-card-background', 'black');
 		root.style.setProperty('--color-card-shadow', '#FF7897');
 		root.style.setProperty('--color-pixel', 'var(--color-cream');
+		root.style.setProperty('--color-select-background', 'black');
+		root.style.setProperty('--color-select-text', 'var(--color-cream)');
 		root.style.setProperty('--color-settings-border', 'rgb(111, 111, 111)');
+		root.style.setProperty('--color-start-over-btn', 'black');
+		root.style.setProperty('--color-start-over-btn-2', 'var(--color-card-background)');
+		root.style.setProperty('--color-start-over-txt', 'var(--color-cream)');
 		root.style.setProperty('--color-text', 'var(--color-cream)');
-
 	} else if (e.target.value === 'zima') {
 		canvasColorPicker.setAttribute('value', '#00000');
 		pixelColorInput.setAttribute('value', '#16B8F3');
@@ -170,7 +180,12 @@ function switchTheme(e) {
 		root.style.setProperty('--color-card-background', 'black');
 		root.style.setProperty('--color-card-shadow', 'var(--color-zima-blue)');
 		root.style.setProperty('--color-pixel', 'var(--color-zima-blue');
+		root.style.setProperty('--color-select-background', 'black');
+        root.style.setProperty('--color-select-text', 'var(--color-zima-blue)');
 		root.style.setProperty('--color-settings-border', 'rgb(111, 111, 111)');
+		root.style.setProperty('--color-start-over-btn', 'black');
+		root.style.setProperty('--color-start-over-btn-2', 'var(--color-zima-blue)');
+		root.style.setProperty('--color-start-over-txt', 'var(--color-cream)');
 		root.style.setProperty('--color-text', 'var(--color-cream)');
 	}
 }
@@ -215,17 +230,28 @@ function createGrid() {
 createGrid();
 slider.addEventListener('input', createGrid);
 
-function updateThemeValue() {
+function initiateUserPref() {
 	let options = document.querySelectorAll('#theme-select > option');
-
+	
 	for (let i = 0; i < options.length; ++i) {
 		if (options[i].getAttribute('value') === 'dark') {
 			options[i].setAttribute('selected', '');
+			root.style.setProperty('--color-background', 'linear-gradient(to bottom right, #25112a, black)');
+			root.style.setProperty('--color-canvas-background', 'rgb(0, 0, 0)');
+			root.style.setProperty('--color-card-background', 'rgb(0, 0, 0)');
+			root.style.setProperty('--color-card-shadow', '#FF7897');
+			root.style.setProperty('--color-select-background', 'black');
+			root.style.setProperty('--color-select-text', 'var(--color-cream)');
+			root.style.setProperty('--color-settings-border', 'rgb(111, 111, 111)');
+			root.style.setProperty('--color-start-over-btn', 'black');
+			root.style.setProperty('--color-start-over-btn-2', 'var(--color-card-background)');
+			root.style.setProperty('--color-start-over-txt', 'var(--color-cream)');
+			root.style.setProperty('--color-text', 'var(--color-cream)');
 		}
 	}
 	canvasColorPicker.setAttribute('value', '#000000');
 }
 
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-	updateThemeValue();
+	initiateUserPref();
 }

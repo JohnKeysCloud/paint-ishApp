@@ -49,8 +49,13 @@
   --color-card-shadow: var(--color-rebecca-purple);
   --color-header: var(--color-cream);
   --color-pixel: var(--color-cream);
+  --color-select-background: var(--color-cream);
   --color-settings-border: silver;
   --color-text: black;
+  --color-start-over-btn: #CFCFC4;
+  --color-start-over-btn-2: #ababa1;
+  --color-start-over-txt: black;
+  --color-select-text: black;
   --color-toggle-shadow: var(--color-canvas);
 
   /* ? custom color/image options */
@@ -336,10 +341,10 @@ aside input[type="color"]::-webkit-color-swatch  {
 }
 
 aside #theme-select {
-  background: var(--color-cream);
+  background: var(--color-select-background);
   border: 3px ridge var(--color-settings-border);
   border-radius: 11px;
-  color: black;
+  color: var(--color-select-text);
   font-family: 'prompt', sans-serif;
   margin-left: 18px;
   padding: 2px 11px;
@@ -451,18 +456,19 @@ aside #shading-toggle.enabled span::before {
 }
 
 aside #start-over-btn {
-  background-color: #ababa1;
+  background-color: var(--color-start-over-btn-2);
   border-radius: 33px;
-  box-shadow: inset 0 15px 8px var(--color-cream);
+  box-shadow: inset 0 15px 8px var(--color-canvas);
   padding: 5px 18px;
   position: relative;
 }
 
 aside #start-over-btn::before {
-  background-color: #CFCFC4;
-  border-bottom: 5px ridge var(--color-cream);
+  background-color: var(--color-start-over-btn);
+  border-bottom: 5px ridge var(--color-canvas);
   border-radius: 33px;
   box-shadow: inset 0 3px 8px white;
+  color: var(--color-start-over-txt);
   content: 'Start Over';
   height: 100%;
   opacity: 1;
@@ -630,16 +636,4 @@ footer p {
 
 #cyclone-container:hover > img {
 	filter: drop-shadow(0 0px 5px #fffce8);
-} 
-
-@media (prefers-color-scheme: dark) {
-  :root {
-  /* ? theme customizations */
-  --color-background: linear-gradient(to bottom right, #25112a, black);
-  --color-canvas-background: rgb(0, 0, 0);
-  --color-card-background: black;
-  --color-card-shadow: #FF7897;
-  --color-text: var(--color-cream);
-  --color-settings-border: rgb(111, 111, 111);
-  }
 }
