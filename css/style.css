@@ -9,6 +9,51 @@
   }
 }
 
+@-webkit-keyframes wobble-horizontal {
+  20% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+  }
+  40% {
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+  60% {
+    -webkit-transform: translateX(2px);
+    transform: translateX(2px);
+  }
+  80% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+@keyframes wobble-horizontal {
+  20% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+  }
+  40% {
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+  60% {
+    -webkit-transform: translateX(2px);
+    transform: translateX(2px);
+  }
+  80% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+
 @-webkit-keyframes start-over {
   from {
     -webkit-transform: translateY(2px);
@@ -374,6 +419,32 @@ aside button {
   width: max-content;
 }
 
+aside #erasing-toggle {
+  background: #ffb5b5;
+  box-shadow: 0 3px var(--color-cream), inset 0 3px pink;
+}
+
+aside #erasing-toggle #eraser-text {
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  display: inline-block;
+  pointer-events: none;
+  position: relative;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  vertical-align: middle;
+}
+
+aside #erasing-toggle.enabled #eraser-text {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-name: wobble-horizontal;
+  animation-name: wobble-horizontal;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+
 aside #erasing-toggle,
 aside #shading-toggle {
   border-radius: 50%;
@@ -387,18 +458,6 @@ aside #shading-toggle {
   box-shadow: 0 3px var(--color-cream), inset 0 3px #555555;
 }
 
-aside #erasing-toggle {
-  background: #ffb5b5;
-  box-shadow: 0 3px var(--color-cream), inset 0 3px pink;
-}
-
-aside #erasing-toggle span {
-  pointer-events: none;
-  position: relative;
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-  transition: all 380ms ease-in-out;
-}
 
 aside #shading-toggle.enabled,
 aside #erasing-toggle.enabled {
@@ -509,7 +568,7 @@ main #canvas {
 
 /* * injectedViaJS * */
 main #canvas .pixel-border {
-  border: 1px solid var(--color-canvas);
+  border: 0.1px dashed var(--color-canvas);
 }
 
 main #canvas .pixel {

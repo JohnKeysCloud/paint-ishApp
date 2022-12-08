@@ -16,25 +16,25 @@ let oneAxisLength = 16;
 function sketchShade(e) {
 	let currentOpacity = +e.target.style.opacity;
 	let initialOpacity = 0.2;
-
+	
 	if (!e.target.classList.contains('pixel')) return;
 	if (currentOpacity === 1) return;
-
-	e.target.style.opacity = initialOpacity += currentOpacity;
+	
+	if (e.which === 1) e.target.style.opacity = initialOpacity += currentOpacity;
 }
 
 function sketchPen(e) {
-	e.target.style.opacity = 1;
+	if (e.which === 1) e.target.style.opacity = 1;
 }
 
 function eraseShade(e) {
 	let currentOpacity = +e.target.style.opacity;
 	let initialOpacity = 0.2;
-
+	
 	if (!e.target.classList.contains('pixel')) return;
 	if (currentOpacity === 0) return;
-
-	e.target.style.opacity = currentOpacity -= initialOpacity;
+	
+	if (e.which === 1) e.target.style.opacity = currentOpacity -= initialOpacity;
 }
 
 function erasePen(e) {
@@ -42,8 +42,8 @@ function erasePen(e) {
 
 	if (!e.target.classList.contains('pixel')) return;
 	if (currentOpacity === 0) return;
-
-	e.target.style.opacity = 0;
+	
+	if (e.which === 1) e.target.style.opacity = 0;
 }
 
 function clearCanvas() {
@@ -57,7 +57,6 @@ function clearCanvas() {
 			pixels[i].style.setProperty('opacity', 0);
 		});
 	}
-	shadeToggleBtn
 }
 startOverBtn.addEventListener('click', clearCanvas);
 
@@ -69,25 +68,34 @@ function toggleEraser(e) {
 	if (e.target.classList.contains('enabled')) {
 		if (dataSketchMethod === 'pen') {
 			canvas.removeEventListener('mouseover', sketchPen);
+			canvas.removeEventListener('mousedown', sketchPen);
 			canvas.addEventListener('mouseover', erasePen);
+			canvas.addEventListener('mousedown', erasePen);
 		} else {
 			canvas.removeEventListener('mouseover', sketchShade);
+			canvas.removeEventListener('mousedown', sketchShade);
 			canvas.addEventListener('mouseover', eraseShade);
+			canvas.addEventListener('mousedown', eraseShade);
 		}
 
 		if (shadeToggleBtn.classList.contains('enabled')) {
 			let newCanvas = canvas.cloneNode(true);
 			canvas.parentNode.replaceChild(newCanvas, canvas);
 			canvas = newCanvas;
-			newCanvas.addEventListener('mouseover', eraseShade);
+			canvas.addEventListener('mouseover', eraseShade);
+			canvas.addEventListener('mousedown', eraseShade);
 		}
 	} else {
 		if (dataSketchMethod === 'pen') {
 			canvas.removeEventListener('mouseover', erasePen);
+			canvas.removeEventListener('mousedown', erasePen);
 			canvas.addEventListener('mouseover', sketchPen);
+			canvas.addEventListener('mousedown', sketchPen);
 		} else {
 			canvas.removeEventListener('mouseover', eraseShade);
+			canvas.removeEventListener('mousedown', eraseShade);
 			canvas.addEventListener('mouseover', sketchShade);
+			canvas.addEventListener('mousedown', sketchShade);
 		}
 	}
 } 
@@ -99,23 +107,30 @@ function toggleShade(e) {
 	if (e.target.classList.contains('enabled')) {
 
 		canvas.removeEventListener('mouseover', sketchPen);
+		canvas.removeEventListener('mousedown', sketchPen);
 		canvas.setAttribute('data-sketch-method', 'shade');
 		canvas.addEventListener('mouseover', sketchShade);
+		canvas.addEventListener('mousedown', sketchShade);
 
 		if (eraseToggleBtn.classList.contains('enabled')) {
 			let newCanvas = canvas.cloneNode(true);
 			canvas.parentNode.replaceChild(newCanvas, canvas);
 			canvas = newCanvas;
 			canvas.addEventListener('mouseover', eraseShade);
+			canvas.addEventListener('mousedown', eraseShade);
 		}
 	} else {
 		canvas.removeEventListener('mouseover', sketchShade);
+		canvas.removeEventListener('mousedown', sketchShade);
 		canvas.setAttribute('data-sketch-method', 'pen');
 		canvas.addEventListener('mouseover', sketchPen);
+		canvas.addEventListener('mousedown', sketchPen);
 
 		if (eraseToggleBtn.classList.contains('enabled')) {
 			canvas.removeEventListener('mouseover', sketchPen);
+			canvas.removeEventListener('mousedown', sketchPen);
 			canvas.addEventListener('mouseover', erasePen);
+			canvas.addEventListener('mousedown', erasePen);
 		}
 	}
 }
@@ -192,6 +207,7 @@ function switchTheme(e) {
 themeSelect.addEventListener('input', switchTheme);
 
 function generatePixels() {
+
 	let totalPixels = oneAxisLength ** 2;
 
 	for (let i = 0; i < totalPixels; ++i) {
@@ -205,6 +221,7 @@ function generatePixels() {
 		canvas.appendChild(pixelBorder);
 	}
 	canvas.addEventListener('mouseover', sketchPen);
+	canvas.addEventListener('mousedown', sketchPen);
 }
 
 function destroyPixels() {
