@@ -204,7 +204,10 @@ header h1:hover::before {
 
 #center-page {
   display: grid;
-  grid-template-areas: 'aside main main';
+  gap: 33px;
+  grid-template-areas: 'main' 'aside';
+  margin-inline: auto;
+  width: min(1200px, 100%);
 }
 
 aside {
@@ -212,7 +215,7 @@ aside {
   display: grid;
   flex-direction: column;
   grid-area: aside;
-  justify-content: right;
+  justify-content: center;
 }
 
 aside #settings {
@@ -236,13 +239,20 @@ aside #settings {
 aside #settings h2 {
   align-self: center;
   color: var(--color-header);
+  display: none;
+}
+
+#settings-mid {
+  display: flex; 
+  gap: 33px;
+  margin-bottom: 18px;
 }
 
 aside #settings .setting {
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 18px;
 }
 
 aside #settings #canvas-size-container {
@@ -361,6 +371,7 @@ aside #canvas-size-container datalist option:last-child {
 
 aside #canvas-size-container #slider-output {
   color: var(--color-text);
+  display: none;
 }
 
 aside label {
@@ -695,4 +706,41 @@ footer p {
 
 #cyclone-container:hover > img {
 	filter: drop-shadow(0 0px 5px #fffce8);
+}
+
+@media only screen and (min-width: 1024px) {
+  header {
+    margin: 0;
+  }
+
+  #center-page {
+    display: grid;
+    gap: 0;
+    grid-template-areas: 'aside main main';
+  }
+
+  aside {
+    align-items: center;
+    display: grid;
+    flex-direction: column;
+    grid-area: aside;
+    justify-content: right;
+  }
+
+  aside #settings h2 {
+    display: block;
+  }
+
+  aside #canvas-size-container #slider-output {
+    display: block;
+  }
+  
+  aside #settings .setting {
+    flex-direction: row;
+  }
+  
+  aside #settings-mid {
+    display: flex; 
+    flex-direction: column;
+  }  
 }
