@@ -54,10 +54,7 @@ function erasePen(e) {
 	if (!e.target.classList.contains('pixel')) return;
 	if (currentOpacity === 0) return;
 	
-	if (e.which === 1) {
-		e.target.style.backgroundColor = pixelColor;
-		e.target.style.opacity = 0;
-	} 
+	if (e.which === 1) e.target.style.opacity = 0;
 }
 
 function clearCanvas() {
