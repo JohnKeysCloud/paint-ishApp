@@ -164,7 +164,7 @@ body {
   flex-direction: column;
   font-family: 'Prompt', sans-serif;
   font-weight: 100;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: space-between;
   line-height: 1.5;
 }
@@ -713,7 +713,6 @@ footer p {
     height: 500px;
     width: 500px;
   }
-  /* * bring size of canvas here and readjust for smaller sceeen sizes above */
 }
 
 @media only screen and (min-width: 1024px) {

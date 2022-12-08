@@ -12,6 +12,7 @@ const themeSelect = document.getElementById('theme-select');
 
 let canvas = document.getElementById('canvas');
 let oneAxisLength = 16;
+let pixelColor = 'var(--color-pixel)';
 
 function sketchShade(e) {
 	let currentOpacity = +e.target.style.opacity;
@@ -20,11 +21,19 @@ function sketchShade(e) {
 	if (!e.target.classList.contains('pixel')) return;
 	if (currentOpacity === 1) return;
 	
-	if (e.which === 1) e.target.style.opacity = initialOpacity += currentOpacity;
+	if (e.which === 1) {
+		e.target.style.backgroundColor = pixelColor;
+		e.target.style.opacity = initialOpacity += currentOpacity;
+	} 
 }
 
 function sketchPen(e) {
-	if (e.which === 1) e.target.style.opacity = 1;
+	if (!e.target.classList.contains('pixel')) return;
+
+	if (e.which === 1) {
+		e.target.style.backgroundColor = pixelColor;
+		e.target.style.opacity = 1;
+	}
 }
 
 function eraseShade(e) {
@@ -34,7 +43,9 @@ function eraseShade(e) {
 	if (!e.target.classList.contains('pixel')) return;
 	if (currentOpacity === 0) return;
 	
-	if (e.which === 1) e.target.style.opacity = currentOpacity -= initialOpacity;
+	if (e.which === 1) {
+		e.target.style.opacity = currentOpacity -= initialOpacity;
+	} 
 }
 
 function erasePen(e) {
@@ -43,7 +54,10 @@ function erasePen(e) {
 	if (!e.target.classList.contains('pixel')) return;
 	if (currentOpacity === 0) return;
 	
-	if (e.which === 1) e.target.style.opacity = 0;
+	if (e.which === 1) {
+		e.target.style.backgroundColor = pixelColor;
+		e.target.style.opacity = 0;
+	} 
 }
 
 function clearCanvas() {
@@ -142,10 +156,7 @@ function canvasColorSwitch() {
 canvasColorPicker.addEventListener('input', canvasColorSwitch);
 
 function pixelColorSwitch() {
-	let pixels = document.getElementsByClassName('pixel');
-	for (let i = 0; i < pixels.length; ++i) {
-		pixels[i].style.setProperty('background', `${this.value}`);
-	}
+	pixelColor = this.value;
 }
 pixelColorInput.addEventListener('input', pixelColorSwitch);
 
@@ -216,9 +227,9 @@ function generatePixels() {
 
 		let pixel = document.createElement('div');
 		pixel.classList.add('pixel');
-
+		
 		pixelBorder.appendChild(pixel);
-		canvas.appendChild(pixelBorder);
+		canvas.appendChild(pixelBorder);	
 	}
 	canvas.addEventListener('mouseover', sketchPen);
 	canvas.addEventListener('mousedown', sketchPen);
