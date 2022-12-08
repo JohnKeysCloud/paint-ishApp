@@ -573,8 +573,8 @@ main #canvas {
   box-shadow: 0 0 18px var(--color-canvas);
   display: grid;
   grid-template-columns: repeat(var(--grid-fraction), 1fr);
-  height: 500px;
-  width: 500px;
+  height: 355px;
+  width: 355px;
 }
 
 /* * injectedViaJS * */
@@ -708,6 +708,14 @@ footer p {
 	filter: drop-shadow(0 0px 5px #fffce8);
 }
 
+@media only screen and (min-width: 555px) {
+  main #canvas {
+    height: 500px;
+    width: 500px;
+  }
+  /* * bring size of canvas here and readjust for smaller sceeen sizes above */
+}
+
 @media only screen and (min-width: 1024px) {
   header {
     margin: 0;
@@ -743,4 +751,11 @@ footer p {
     display: flex; 
     flex-direction: column;
   }  
+}
+
+@media only screen and (min-width: 1200px) {
+    main #canvas {
+      height: 777px;
+      width: 777px;
+    }
 }
