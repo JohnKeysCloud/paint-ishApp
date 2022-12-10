@@ -1,6 +1,7 @@
 const canvasColorPicker = document.getElementById('canvas-background-color');
 const eraseToggleBtn = document.getElementById('erasing-toggle');
 const canvasBackgroundInput = document.querySelector('#center-page main #canvas');
+const gridToggle = document.getElementById('grid-toggle');
 const pixels = document.getElementsByClassName('pixel');
 const pixelColorInput = document.getElementById('color-pixels');
 const root = document.documentElement;
@@ -9,9 +10,12 @@ const slider = document.getElementById('slider');
 const sliderOutput = document.getElementById('slider-output');
 const startOverBtn = document.getElementById('start-over-btn');
 const themeSelect = document.getElementById('theme-select');
+const helpToggle = document.getElementById('help-button');
+const helpModal = document.getElementById('help-modal');
+const modalCloseButton = document.getElementById('modal-close-button');
 
 let canvas = document.getElementById('canvas');
-let oneAxisLength = 16;
+let oneAxisLength = 32;
 let pixelColor = 'var(--color-pixel)';
 
 function sketchShade(e) {
@@ -175,7 +179,7 @@ function switchTheme(e) {
 		root.style.setProperty('--color-start-over-btn-2', '#ababa1');
 		root.style.setProperty('--color-start-over-txt', 'black');
 		root.style.setProperty('--color-text', 'black');
-
+		root.style.setProperty('--pixel-border-opacity', 1);
 	} else if (e.target.value === 'dark') {
 		canvasColorPicker.setAttribute('value', '#000000');
 		pixelColorInput.setAttribute('value', '#FFFFC9');
@@ -193,6 +197,7 @@ function switchTheme(e) {
 		root.style.setProperty('--color-start-over-btn-2', 'var(--color-card-background)');
 		root.style.setProperty('--color-start-over-txt', 'var(--color-cream)');
 		root.style.setProperty('--color-text', 'var(--color-cream)');
+		root.style.setProperty('--pixel-border-opacity', 0.5);
 	} else if (e.target.value === 'zima') {
 		canvasColorPicker.setAttribute('value', '#00000');
 		pixelColorInput.setAttribute('value', '#16B8F3');
@@ -210,13 +215,43 @@ function switchTheme(e) {
 		root.style.setProperty('--color-start-over-btn-2', 'var(--color-zima-blue)');
 		root.style.setProperty('--color-start-over-txt', 'var(--color-cream)');
 		root.style.setProperty('--color-text', 'var(--color-cream)');
+		root.style.setProperty('--pixel-border-opacity', 0.5);
 	}
 }
 themeSelect.addEventListener('input', switchTheme);
 
+function closeModal() {
+	helpModal.classList.toggle('open');
+}
+
+function toggleHelpModal() {
+	helpModal.classList.toggle('open');
+	modalCloseButton.addEventListener('click', closeModal);
+}
+helpToggle.addEventListener('click', toggleHelpModal);
+
+function toggleGrid() {
+	let pixelBorders = document.querySelectorAll('main #canvas .pixel-border');
+	console.log('balls')
+
+	gridToggle.classList.toggle('disabled');
+
+	if (gridToggle.classList.contains('disabled')) {
+		for (let i = 0; i < pixelBorders.length; ++i) {
+			pixelBorders[i].classList.add('remove-borders');
+		}	
+	} else {
+		for (let i = 0; i < pixelBorders.length; ++i) {
+			pixelBorders[i].classList.remove('remove-borders');
+		}
+	}
+}
+gridToggle.addEventListener('click', toggleGrid);
+
 function generatePixels() {
 
 	let totalPixels = oneAxisLength ** 2;
+	if (gridToggle.classList.contains('enabled')) toggleGrid();
 
 	for (let i = 0; i < totalPixels; ++i) {
 		let pixelBorder = document.createElement('div');
@@ -226,7 +261,7 @@ function generatePixels() {
 		pixel.classList.add('pixel');
 		
 		pixelBorder.appendChild(pixel);
-		canvas.appendChild(pixelBorder);	
+		canvas.appendChild(pixelBorder);
 	}
 	canvas.addEventListener('mouseover', sketchPen);
 	canvas.addEventListener('mousedown', sketchPen);
@@ -248,7 +283,7 @@ function updateSliderValue() {
 }
 
 function createGrid() {
-	updateSliderValue()
+	updateSliderValue();
 	destroyPixels();
 }
 
@@ -257,24 +292,28 @@ slider.addEventListener('input', createGrid);
 
 function initiateUserPref() {
 	let options = document.querySelectorAll('#theme-select > option');
-	
+
 	for (let i = 0; i < options.length; ++i) {
 		if (options[i].getAttribute('value') === 'dark') {
 			options[i].setAttribute('selected', '');
-			root.style.setProperty('--color-background', 'linear-gradient(to bottom right, #25112a, black)');
-			root.style.setProperty('--color-canvas-background', 'rgb(0, 0, 0)');
-			root.style.setProperty('--color-card-background', 'rgb(0, 0, 0)');
-			root.style.setProperty('--color-card-shadow', '#FF7897');
-			root.style.setProperty('--color-select-background', 'black');
-			root.style.setProperty('--color-select-text', 'var(--color-cream)');
-			root.style.setProperty('--color-settings-border', 'rgb(111, 111, 111)');
-			root.style.setProperty('--color-start-over-btn', 'black');
-			root.style.setProperty('--color-start-over-btn-2', 'var(--color-card-background)');
-			root.style.setProperty('--color-start-over-txt', 'var(--color-cream)');
-			root.style.setProperty('--color-text', 'var(--color-cream)');
+		} else {
+			options[i].removeAttribute('selected', '');
 		}
 	}
+
 	canvasColorPicker.setAttribute('value', '#000000');
+	root.style.setProperty('--color-background', 'linear-gradient(to bottom right, #25112a, black)');
+	root.style.setProperty('--color-canvas-background', 'rgb(0, 0, 0)');
+	root.style.setProperty('--color-card-background', 'rgb(0, 0, 0)');
+	root.style.setProperty('--color-card-shadow', '#FF7897');
+	root.style.setProperty('--color-select-background', 'black');
+	root.style.setProperty('--color-select-text', 'var(--color-cream)');
+	root.style.setProperty('--color-settings-border', 'rgb(111, 111, 111)');
+	root.style.setProperty('--color-start-over-btn', 'black');
+	root.style.setProperty('--color-start-over-btn-2', 'var(--color-card-background)');
+	root.style.setProperty('--color-start-over-txt', 'var(--color-cream)');
+	root.style.setProperty('--color-text', 'var(--color-cream)');
+	root.style.setProperty('--pixel-border-opacity', 0.5);
 }
 
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {

@@ -85,6 +85,7 @@
 :root {
   /* ? gridSize */
   --grid-fraction: repeat(16, 1fr);
+  --pixel-border-opacity: 1;
 
   /* ? theme customizations */
   --color-background: var(--color-purple-rain);
@@ -112,6 +113,7 @@
   --color-purple-rain:#8F6BC3;
   --color-rebecca-purple: #663399;
   --color-zima-blue: #16B8F3;
+  --image-cyclone: url('../assets/images/logo-cyclone.webp') center / cover no-repeat;
   --image-space: url('../assets/images/theme-zima-blue.jpg') center / cover no-repeat;
 
   /* ? Puck-Man */
@@ -131,7 +133,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   margin: 0;
   padding: 0;
 }
@@ -234,6 +237,61 @@ aside #settings {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
+
+aside #settings #card-top {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;  
+}
+
+aside #settings #card-top button {
+  color: var(--color-cream);
+  background-color: transparent;
+  filter: drop-shadow(0 0 2px);
+  font-family: 'prompt';
+  font-size: 1.125rem;
+  margin: 0;
+  padding: 0;
+  text-shadow: 1px 1px 3px var(--color-card-shadow);
+}
+
+aside #settings #card-top #grid-toggle {
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+
+aside #settings #card-top #help-button {
+
+}
+
+
+/* aside #settings #card-top #grid-toggle:hover {
+  transform: scale(1.3);
+} */
+
+aside #settings #card-top #grid-toggle.disabled {
+  color: var(--color-canvas);
+  transform: rotate(360deg);
+
+}
+
+aside #settings #card-top #grid-toggle::before {
+  bottom: 0px;
+  content: 'Toggle Grid';
+  font-size: 0.813rem;
+  position: absolute;
+  right: -14px;
+  text-shadow: 1px 1px 3px black;
+  transform: scale(0);
+  transition: all 380ms ease-in-out, opacity 3s ease-in;
+}
+
+aside #settings #card-top #grid-toggle:hover::before {
+  content: 'Toggle Grid';
+  font-size: 0.813rem;
+  position: absolute;
+  transform: scale(1) translate(-45px, -36px) rotate(-45deg);
 }
 
 aside #settings h2 {
@@ -469,7 +527,6 @@ aside #shading-toggle {
   box-shadow: 0 3px var(--color-cream), inset 0 3px #555555;
 }
 
-
 aside #shading-toggle.enabled,
 aside #erasing-toggle.enabled {
   -webkit-transform: scale(0.95);
@@ -564,6 +621,7 @@ main {
   display: grid;
   grid-area: main;
   place-items: center;
+  position: relative;
 }
 
 main #canvas {
@@ -577,9 +635,85 @@ main #canvas {
   width: 355px;
 }
 
+main #help-modal {
+  color: white;
+  border-radius: 11px 55px 11px 55px;
+  background-color: var(--color-card-background);
+  box-shadow: 0 0 33px var(--color-card-shadow);
+  opacity: 0;
+  padding: 33px;
+  transition: all 380ms ease-in-out;
+  visibility: hidden;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 1;
+}
+
+main #help-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+main #help-modal p,
+main #help-modal h5,
+main #help-modal h6 {
+  font-size: 1rem;
+}
+
+main #help-modal #close-button-container {
+  display: grid;
+  margin-bottom: 18px;
+  width: 100%;
+}
+
+main #help-modal #close-button-container button {
+  background-color: transparent;
+  border: none; 
+  color: var(--color-blinky);
+  cursor: pointer;
+  font-size: 1.125rem;
+  justify-self: right;
+  position: relative;
+  text-shadow: 0 0 3px var(--color-blinky);
+}
+
+main #help-modal #close-button-container button::before {
+  content: 'CLOSE';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  opacity: 0;
+  filter: drop-shadow(0 0 10px red);
+  transform: translateX(-50%);
+}
+
+#warning-word {
+  color: var(--color-pacman);
+  text-shadow: 0 0 10px;
+}
+
 /* * injectedViaJS * */
 main #canvas .pixel-border {
-  border: 0.1px dashed var(--color-canvas);
+  position: relative;
+}
+
+main #canvas .pixel-border::before {
+  border: 1px solid var(--color-canvas);
+  content:'';
+  height: 100%;
+  left: 0;
+  opacity: var(--pixel-border-opacity);
+  position: absolute;
+  top: 0;
+  transition: opacity 380ms ease-in-out;
+  width: 100%;
+}
+
+main #canvas .pixel-border.remove-borders::before {
+  opacity: 0;
 }
 
 main #canvas .pixel {

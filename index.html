@@ -23,25 +23,39 @@
 
 	<div id="center-page">
 		<main>
+			<span id="help-modal">
+				<div id="close-button-container">
+					<button id="modal-close-button">CLOSE</button>
+				</div>
+				<h5><span id="warning-word">WARNING:</span> Changing dimensions will result in the loss of your art.</h5>
+				<hr> 
+				<h6>Q: What if both, the eraser and shade buttons are toggled simultaneously?</h6> 
+				<p>A: This results in an incremental lightening effect on interacted pixels.</p> 
+				<hr>
+			</span>
 			<div id="canvas" data-sketch-method="pen">
 			</div>
 		</main>
 
 		<aside>
 			<div id="settings">
-				<h2>Settings</h2>
+				<div id="card-top">
+					<button id="grid-toggle">#</button>
+					<h2>Settings</h2>
+					<button id="help-button">?</button>
+				</div>
 
 				<div id="canvas-size-container" class="setting">
 					<label for="slider">Dimensions:</label>
-					<input type="range" id="slider" name="slider" min="1" step="1" max="32" value="16" list="tickmarks">
+					<input type="range" id="slider" name="slider" min="1" step="1" max="64" value="32" list="tickmarks">
 					<datalist id="tickmarks">
 						<option value="1">1</option>
-						<option value="8">8</option>
 						<option value="16">16</option>
-						<option value="24">24</option>
 						<option value="32">32</option>
+						<option value="48">48</option>
+						<option value="64">64</option>
 					</datalist>
-					<div id="slider-output">(16 x 16)</div>
+					<div id="slider-output">(32 x 32)</div>
 				</div>
 
 				<div id="settings-mid">
