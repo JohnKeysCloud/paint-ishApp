@@ -195,7 +195,7 @@ function switchTheme(e) {
 		root.style.setProperty('--color-start-over-btn', '#CFCFC4');
 		root.style.setProperty('--color-start-over-btn-2', '#ababa1');
 		root.style.setProperty('--color-start-over-txt', 'black');
-		root.style.setProperty('--color-text', 'black');
+		root.style.setProperty('--color-text', '#333333');
 		root.style.setProperty('--pixel-border-opacity', 1);
 	} else if (e.target.value === 'dark') {
 		canvasColorPicker.setAttribute('value', '#000000');

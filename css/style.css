@@ -54,6 +54,67 @@
   }
 }
 
+@-webkit-keyframes rotate-360 {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate-360 {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotate-360-reverse {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes rotate-360-reverse {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@-webkit-keyframes slow-flicker {
+  from {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+@keyframes slow-flicker {
+  from {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+
 @-webkit-keyframes start-over {
   from {
     -webkit-transform: translateY(2px);
@@ -97,7 +158,7 @@
   --color-pixel: var(--color-cream);
   --color-select-background: var(--color-cream);
   --color-settings-border: silver;
-  --color-text: black;
+  --color-text: var(--color-cream);
   --color-start-over-btn: #CFCFC4;
   --color-start-over-btn-2: #ababa1;
   --color-start-over-txt: black;
@@ -318,17 +379,15 @@ aside #settings h2 {
   display: none;
 }
 
-#settings-mid {
-  display: flex; 
-  gap: 33px;
-  margin-bottom: 18px;
-}
-
-aside #settings .setting {
+aside #settings-mid {
+  display: grid; 
+  /* border: 1px solid green; */
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  gap: 18px;
+  
+  margin-bottom: 18px;
 }
 
 aside #settings #canvas-size-container {
@@ -452,7 +511,7 @@ aside #canvas-size-container #slider-output {
 
 aside label {
   color: var(--color-text);
-  font-size: 1.125rem;
+  font-size: 1rem;
 }
 
 aside input[type="color"] {
@@ -472,15 +531,81 @@ aside input[type="color"]::-webkit-color-swatch  {
   border-radius: 12px;
 }
 
-aside #theme-select {
+aside #settings #theme-select {
   background: var(--color-select-background);
   border: 3px ridge var(--color-settings-border);
   border-radius: 11px;
   color: var(--color-select-text);
   font-family: 'prompt', sans-serif;
-  margin-left: 18px;
-  padding: 2px 11px;
+  padding: 2px 5px;
 }
+
+aside #settings .setting {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+aside #settings .setting .label-container {
+  -webkit-animation: rotate-360 33s linear infinite;
+  animation: rotate-360 33s linear infinite;
+  display: inline-grid;
+  height: 88px;
+  left: -10px;
+  place-items: center;
+  position: absolute;
+  top: -25.3px;
+  -webkit-transition: all 380ms ease-in-out;
+  transition: all 380ms ease-in-out;
+  width: 88px;
+}
+
+aside #settings .setting .label-container:hover {
+  -webkit-animation: rotate-360-reverse 33s linear infinite;
+  animation: rotate-360-reverse 33s linear infinite;
+}
+
+aside #settings .setting .rounded-label span {
+  -webkit-animation: slow-flicker 3s linear infinite;
+  animation: slow-flicker 3s linear infinite;
+  color: var(--color-text);
+  display: grid;
+  font-size: 1rem;
+  font-weight: 200;
+  height: 43px;
+  justify-content: center;
+  left: 50%;
+  opacity: 0.5;
+  position: absolute;
+  text-shadow: 0 0 3px var(--color-text);
+  top: 3.5%;
+  transform-origin: bottom center;
+  width: 30px;
+}
+
+aside #settings .setting .rounded-label .char-1 {
+  color: var(--color-canvas);
+  font-weight: 400;
+  opacity: 1;
+  text-shadow: 0 0 2px;
+  transform-origin: center;
+}
+
+aside #settings .setting .rounded-label .char-7 {
+  animation: none;
+  opacity: 1;
+  color: var(--color-canvas);
+} 
+
+aside #settings .setting .rounded-label .char-1 { -webkit-transform: translate(-50%, -8.5%) rotate(0); transform: translate(-50%, -8.5%) rotate(0); }
+aside #settings .setting .rounded-label .char-2 { -webkit-transform: translate(-50%, -8.5%) rotate(51.43deg); transform: translate(-50%, -8.5%) rotate(51.43deg); }
+aside #settings .setting .rounded-label .char-3 { -webkit-transform: translate(-50%, -8.5%) rotate(102.86deg); transform: translate(-50%, -8.5%) rotate(102.86deg); }
+aside #settings .setting .rounded-label .char-4 { -webkit-transform: translate(-50%, -8.5%) rotate(154.29deg); transform: translate(-50%, -8.5%) rotate(154.29deg); }
+aside #settings .setting .rounded-label .char-5 { -webkit-transform: translate(-50%, -8.5%) rotate(205.71deg); transform: translate(-50%, -8.5%) rotate(205.71deg); }
+aside #settings .setting .rounded-label .char-6 { -webkit-transform: translate(-50%, -8.5%) rotate(257.14deg); transform: translate(-50%, -8.5%) rotate(257.14deg); }
+aside #settings .setting .rounded-label .char-7 { -webkit-transform: translate(-50%, -8.5%) rotate(308.58deg); transform: translate(-50%, -8.5%) rotate(308.58deg); }
 
 aside #toggles {
   align-items: center;
@@ -736,7 +861,6 @@ main #canvas .pixel-border.remove-borders::before {
 
 main #canvas .pixel {
   background: var(--color-pixel);
-  /* border: 1px solid var(--color-canvas); */
   height: 100%;
   opacity: 0;
   position: relative;
@@ -894,20 +1018,11 @@ footer p {
   aside #canvas-size-container #slider-output {
     display: block;
   }
-  
-  aside #settings .setting {
-    flex-direction: row;
-  }
-  
-  aside #settings-mid {
-    display: flex; 
-    flex-direction: column;
-  }  
 }
 
 @media only screen and (min-width: 1200px) {
     main #canvas {
-      height: 777px;
-      width: 777px;
+      height: 700px;
+      width: 700px;
     }
 }
