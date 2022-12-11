@@ -1,6 +1,7 @@
 const canvasColorPicker = document.getElementById('canvas-background-color');
 const eraseToggleBtn = document.getElementById('erasing-toggle');
 const canvasBackgroundInput = document.querySelector('#center-page main #canvas');
+const cycloneStudiosLogo = document.getElementById('cyclone-studios-logo');
 const gridToggle = document.getElementById('grid-toggle');
 const pixels = document.getElementsByClassName('pixel');
 const pixelColorInput = document.getElementById('color-pixels');
@@ -18,6 +19,25 @@ let canvas = document.getElementById('canvas');
 let oneAxisLength = 32;
 let pixelColor = 'var(--color-pixel)';
 
+function toggleEasterEgg() {
+	let lastPixelColor = pixelColorInput.value;
+
+	cycloneStudiosLogo.classList.toggle('cyclone-mode');
+	
+	if (cycloneStudiosLogo.classList.contains('cyclone-mode')) {
+		pixelColor = 'var(--image-cyclone)';
+		root.style.setProperty('--easter-egg-opacity', '1');
+		root.style.setProperty('--easter-egg-scale', 'scale(0.25)');
+		root.style.setProperty('--easter-egg-visibility', 'visible');
+	} else {
+		pixelColor = lastPixelColor;
+		root.style.setProperty('--easter-egg-opacity', '0');
+		root.style.setProperty('--easter-egg-scale', 'scale(0)');
+        root.style.setProperty('--easter-egg-visibility', 'hidden');
+	} 
+}
+cycloneStudiosLogo.addEventListener('click', toggleEasterEgg);
+
 function sketchShade(e) {
 	let currentOpacity = +e.target.style.opacity;
 	let initialOpacity = 0.2;
@@ -26,7 +46,7 @@ function sketchShade(e) {
 	if (currentOpacity === 1) return;
 	
 	if (e.which === 1) {
-		e.target.style.backgroundColor = pixelColor;
+		e.target.style.background = pixelColor;
 		e.target.style.opacity = initialOpacity += currentOpacity;
 	} 
 }
@@ -35,7 +55,7 @@ function sketchPen(e) {
 	if (!e.target.classList.contains('pixel')) return;
 
 	if (e.which === 1) {
-		e.target.style.backgroundColor = pixelColor;
+		e.target.style.background = pixelColor;
 		e.target.style.opacity = 1;
 	}
 }
@@ -175,6 +195,10 @@ canvasColorPicker.addEventListener('input', canvasColorSwitch);
 
 function pixelColorSwitch() {
 	pixelColor = this.value;
+
+	if (cycloneStudiosLogo.classList.contains('cyclone-mode')) {
+		cycloneStudiosLogo.click();
+	}
 }
 pixelColorInput.addEventListener('input', pixelColorSwitch);
 

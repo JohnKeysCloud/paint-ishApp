@@ -148,6 +148,11 @@
   --grid-fraction: repeat(16, 1fr);
   --pixel-border-opacity: 1;
 
+  /* ? easter egg */
+  --easter-egg-opacity: 0;
+  --easter-egg-scale: 0;
+  --easter-egg-visibility: hidden;
+
   /* ? theme customizations */
   --color-background: var(--color-purple-rain);
   --color-canvas: var(--color-hot-pink);
@@ -298,6 +303,7 @@ aside #settings {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+  width: 300px;
 }
 
 aside #settings #card-top {
@@ -393,6 +399,11 @@ aside #settings-mid {
   margin-bottom: 18px;
 }
 
+aside #settings-mid .setting:nth-child(2),
+aside #settings-mid .setting:nth-child(3) {
+  align-self: end;
+}
+
 aside #settings #canvas-size-container {
   align-items: center;
   display: flex;
@@ -422,6 +433,7 @@ aside #canvas-size-container #slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   background: url('../assets/images/logo-cyclone.webp') center / contain no-repeat;
+  /* background: red; */
   border-radius: 50%;
   cursor: pointer;
   filter: drop-shadow(0 0 1px var(--color-canvas));
@@ -483,28 +495,28 @@ aside #canvas-size-container datalist option::before {
 }
 
 aside #canvas-size-container datalist option:first-child{
-  -webkit-transform: translateX(-2.4px);
-  transform: translateX(-2.4px);
+  -webkit-transform: translateX(-11.2px);
+  transform: translateX(-11.2px);
 }
 
 aside #canvas-size-container datalist option:nth-child(2) {
-  -webkit-transform: translateX(-4.2px);
-  transform: translateX(-4.2px);
+  -webkit-transform: translateX(-7.9px);
+  transform: translateX(-7.9px);
 }
 
 aside #canvas-size-container datalist option:nth-child(3) {
-  -webkit-transform: translateX(-2px);
-  transform: translateX(-2px);
+  -webkit-transform: translateX(-1.5px);
+  transform: translateX(-1.5px);
 }
 
 aside #canvas-size-container datalist option:nth-child(4) {
-  -webkit-transform: translateX(0.1px);
-  transform: translateX(0.1px);
+  -webkit-transform: translateX(4.4px);
+  transform: translateX(4.4px);
 }
 
 aside #canvas-size-container datalist option:last-child {
-  -webkit-transform: translateX(2.4px);
-  transform: translateX(2.4px);
+  -webkit-transform: translateX(10.5px);
+  transform: translateX(10.5px);
 }
 
 aside #canvas-size-container #slider-output {
@@ -531,7 +543,24 @@ aside input[type="color"] {
 aside input[type="color"]::-webkit-color-swatch,
 aside input[type="color"]::-webkit-color-swatch  {
   border: 3px ridge var(--color-settings-border);
-  border-radius: 12px;
+  border-radius: 18px;
+}
+
+aside .setting:nth-child(2) .label-container::before {
+  content: url('../assets/images/logo-cyclone.webp');
+  display: inline-block;
+  height: 100%;
+  left: 1px;
+  opacity: var(--easter-egg-opacity);
+  position: absolute;
+  pointer-events: none;
+  top: 1px;
+  visibility: var(--easter-egg-visibility);
+  width: 100%;
+  -webkit-transform: var(--easter-egg-scale);
+  transform: var(--easter-egg-scale);
+  -webkit-transition: all 380ms ease-in-out;
+  transition: all 380ms ease-in-out;
 }
 
 aside #settings #theme-select {
@@ -541,6 +570,11 @@ aside #settings #theme-select {
   color: var(--color-select-text);
   font-family: 'prompt', sans-serif;
   padding: 2px 5px;
+}
+
+aside #settings #theme-select:focus {
+  box-shadow: inset 0 0 11px var(--color-canvas);
+  outline: none;
 }
 
 aside #settings .setting {
@@ -556,23 +590,25 @@ aside #settings .setting .label-container {
   animation: rotate-360 33s linear infinite;
   display: inline-grid;
   height: 88px;
-  left: -10px;
+  left: -11.5px;
   place-items: center;
   position: absolute;
   top: -25.3px;
   -webkit-transition: all 380ms ease-in-out;
   transition: all 380ms ease-in-out;
   width: 88px;
+
+  /* border: 1px solid red; */
 }
 
 aside #settings .setting .label-container:hover {
-  -webkit-animation: rotate-360-reverse 33s linear infinite;
-  animation: rotate-360-reverse 33s linear infinite;
+  -webkit-animation: rotate-360-reverse 1.34s linear infinite;
+  animation: rotate-360-reverse 1.34s linear infinite;
 }
 
 aside #settings .setting .rounded-label span {
-  -webkit-animation: slow-flicker 3s linear infinite;
-  animation: slow-flicker 3s linear infinite;
+  -webkit-animation: slow-flicker 2.67s ease-in-out infinite;
+  animation: slow-flicker 2.67s ease-in-out infinite;
   color: var(--color-text);
   display: grid;
   font-size: 1rem;
@@ -582,39 +618,40 @@ aside #settings .setting .rounded-label span {
   left: 50%;
   opacity: 0.5;
   position: absolute;
-  text-shadow: 0 0 3px var(--color-text);
-  top: 3.5%;
+  text-shadow: 0 0 3px;
+  top: 3.8%;
   transform-origin: bottom center;
   width: 30px;
+
+  /* border: 1px solid chartreuse; */
 }
 
 aside #settings .setting .rounded-label .char-1 {
-  color: var(--color-canvas);
+  font-size: 0.625rem;
   font-weight: 400;
   opacity: 1;
-  text-shadow: 0 0 2px;
-  transform-origin: center;
+  text-shadow: 0 0 8px;
 }
 
-aside #settings .setting .rounded-label .char-7 {
+aside #settings .setting .rounded-label .char-2 {
   animation: none;
-  opacity: 1;
   color: var(--color-canvas);
+  opacity: 1;
 } 
 
-aside #settings .setting .rounded-label .char-1 { -webkit-transform: translate(-50%, -8.5%) rotate(0); transform: translate(-50%, -8.5%) rotate(0); }
-aside #settings .setting .rounded-label .char-2 { -webkit-transform: translate(-50%, -8.5%) rotate(51.43deg); transform: translate(-50%, -8.5%) rotate(51.43deg); }
-aside #settings .setting .rounded-label .char-3 { -webkit-transform: translate(-50%, -8.5%) rotate(102.86deg); transform: translate(-50%, -8.5%) rotate(102.86deg); }
-aside #settings .setting .rounded-label .char-4 { -webkit-transform: translate(-50%, -8.5%) rotate(154.29deg); transform: translate(-50%, -8.5%) rotate(154.29deg); }
-aside #settings .setting .rounded-label .char-5 { -webkit-transform: translate(-50%, -8.5%) rotate(205.71deg); transform: translate(-50%, -8.5%) rotate(205.71deg); }
-aside #settings .setting .rounded-label .char-6 { -webkit-transform: translate(-50%, -8.5%) rotate(257.14deg); transform: translate(-50%, -8.5%) rotate(257.14deg); }
-aside #settings .setting .rounded-label .char-7 { -webkit-transform: translate(-50%, -8.5%) rotate(308.58deg); transform: translate(-50%, -8.5%) rotate(308.58deg); }
+aside #settings .setting .rounded-label .char-1 { -webkit-transform: translate(-50%, -1%) rotate(0); transform: translate(-50%, -1%) rotate(0); }
+aside #settings .setting .rounded-label .char-2 { -webkit-transform: translate(-50%, -8.5%) rotate(19deg); transform: translate(-50%, -8.5%) rotate(19deg); }
+aside #settings .setting .rounded-label .char-3 { -webkit-transform: translate(-50%, -8.5%) rotate(38deg);; transform: translate(-50%, -8.5%) rotate(38deg); }
+aside #settings .setting .rounded-label .char-4 { -webkit-transform: translate(-50%, -8.5%) rotate(57deg); transform: translate(-50%, -8.5%) rotate(57deg); }
+aside #settings .setting .rounded-label .char-5 { -webkit-transform: translate(-50%, -8.5%) rotate(76deg); transform: translate(-50%, -8.5%) rotate(76deg); }
+aside #settings .setting .rounded-label .char-6 { -webkit-transform: translate(-50%, -8.5%) rotate(95deg); transform: translate(-50%, -8.5%) rotate(95deg); }
+aside #settings .setting .rounded-label .char-7 { -webkit-transform: translate(-50%, -8.5%) rotate(114deg); transform: translate(-50%, -8.5%) rotate(114deg); }
 
 aside #toggles {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 21px;
+  margin-bottom: 25px;
   -webkit-transition: all 380ms ease-in-out;
   transition: all 380ms ease-in-out;
   width: 100%;
@@ -799,6 +836,7 @@ main #help-modal {
   -webkit-transition: all 380ms ease-in-out;
   transition: all 380ms ease-in-out;
   visibility: hidden;
+  width: 333px;
   z-index: 1;
 }
 
@@ -836,8 +874,15 @@ main #help-modal #close-button-container button::before {
   top: 0;
   left: 50%;
   opacity: 0;
-  filter: drop-shadow(0 0 10px red);
+  filter: drop-shadow(0 0 2px red);
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
+  -webkit-transition: opacity 380ms ease-in-out;
+  transition: opacity 380ms ease-in-out;
+}
+
+main #help-modal #close-button-container button:hover::before {
+  opacity: 1;
 }
 
 #warning-word {
@@ -955,6 +1000,10 @@ footer p {
 	padding-bottom: 10px;
 	-webkit-transition: all 0.8s ease-in;
 	transition: all 0.8s ease-in;
+}
+
+#cyclone-container #cyclone-studios-logo {
+  cursor: pointer;
 }
 
 #cyclone-container:hover {
