@@ -61,7 +61,22 @@ function erasePen(e) {
 	if (e.which === 1) e.target.style.opacity = 0;
 }
 
-function clearCanvas() {
+function disableToggles() {
+	if (shadeToggleBtn.classList.contains('enabled')) {
+		shadeToggleBtn.click();
+	}
+	if (eraseToggleBtn.classList.contains('enabled')) {
+		eraseToggleBtn.click();
+	}
+	if (gridToggle.classList.contains('disabled')) {
+		gridToggle.click();
+	}
+	if (helpToggle.classList.contains('help-button-feedback')) {
+		helpToggle.click();
+	}
+}
+
+function startOver() {
 	startOverBtn.classList.add('clicked');
 	startOverBtn.addEventListener('animationend', () => startOverBtn.classList.remove('clicked'));
 
@@ -72,8 +87,10 @@ function clearCanvas() {
 			pixels[i].style.setProperty('opacity', 0);
 		});
 	}
+
+	disableToggles();
 }
-startOverBtn.addEventListener('click', clearCanvas);
+startOverBtn.addEventListener('click', startOver);
 
 function toggleEraser(e) {
 	let dataSketchMethod = canvas.getAttribute('data-sketch-method');
@@ -222,10 +239,19 @@ themeSelect.addEventListener('input', switchTheme);
 
 function closeModal() {
 	helpModal.classList.toggle('open');
+
+	if (helpModal.classList.contains('open')) {
+		helpToggle.classList.add('help-button-feedback');
+    } else helpToggle.classList.remove('help-button-feedback');
 }
 
 function toggleHelpModal() {
 	helpModal.classList.toggle('open');
+
+	if (helpModal.classList.contains('open')) {
+		helpToggle.classList.add('help-button-feedback');
+	} else helpToggle.classList.remove('help-button-feedback');
+
 	modalCloseButton.addEventListener('click', closeModal);
 }
 helpToggle.addEventListener('click', toggleHelpModal);
@@ -284,6 +310,7 @@ function updateSliderValue() {
 
 function createGrid() {
 	updateSliderValue();
+	disableToggles();
 	destroyPixels();
 }
 
