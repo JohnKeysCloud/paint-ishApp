@@ -319,6 +319,7 @@ aside #settings #card-top button {
 
 aside #settings #card-top #grid-toggle {
   position: relative;
+  -webkit-transition: all 380ms ease-in-out;
   transition: all 380ms ease-in-out;
 }
 
@@ -335,6 +336,7 @@ aside #settings #card-top #grid-toggle::before {
   right: -14px;
   text-shadow: 1px 1px 3px black;
   transform: scale(0);
+  -webkit-transition: all 380ms ease-in-out, opacity 3s ease-in;
   transition: all 380ms ease-in-out, opacity 3s ease-in;
 }
 
@@ -347,6 +349,7 @@ aside #settings #card-top #grid-toggle:hover::before {
 
 aside #settings #card-top #help-button {
   position: relative;
+  -webkit-transition: all 380ms ease-in-out;
   transition: all 380ms ease-in-out;
 }
 
@@ -612,6 +615,7 @@ aside #toggles {
   display: flex;
   justify-content: space-between;
   margin-bottom: 21px;
+  -webkit-transition: all 380ms ease-in-out;
   transition: all 380ms ease-in-out;
   width: 100%;
 }
@@ -686,6 +690,7 @@ aside #erasing-toggle::before {
   opacity: 0;
   position: absolute;
   top: 0;
+  -webkit-transition: 380ms ease-in-out;
   transition: 380ms ease-in-out;
   width: 100%;
 }
@@ -717,6 +722,7 @@ aside #shading-toggle span::before {
   position: absolute;
   text-shadow: 0 0 5px white;
   top: 0;
+  -webkit-transition: opacity 380ms ease-in-out;
   transition: opacity 380ms ease-in-out;
   width: 100%;
 }
@@ -779,19 +785,20 @@ main #canvas {
 }
 
 main #help-modal {
-  color: white;
-  border-radius: 11px 55px 11px 55px;
   background-color: var(--color-card-background);
+  border-radius: 11px 55px 11px 55px;
   box-shadow: 0 0 33px var(--color-card-shadow);
+  color: white;
+  left: 50%;
   opacity: 0;
   padding: 33px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: all 380ms ease-in-out;
   transition: all 380ms ease-in-out;
   visibility: hidden;
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
   z-index: 1;
 }
 
