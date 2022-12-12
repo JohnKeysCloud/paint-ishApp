@@ -902,9 +902,11 @@ main #canvas .pixel-border::before {
   left: 0;
   opacity: var(--pixel-border-opacity);
   position: absolute;
+  pointer-events: none;
   top: 0;
   transition: opacity 380ms ease-in-out;
   width: 100%;
+  z-index: 1;
 }
 
 main #canvas .pixel-border.remove-borders::before {
