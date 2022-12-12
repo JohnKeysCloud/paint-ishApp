@@ -837,7 +837,7 @@ main #help-modal {
   transition: all 380ms ease-in-out;
   visibility: hidden;
   width: 333px;
-  z-index: 1;
+  z-index: 2;
 }
 
 main #help-modal.open {
@@ -919,6 +919,7 @@ main #canvas .pixel {
   opacity: 0;
   position: relative;
   width: 100%;
+  z-index: 0;
 }
 
 main #canvas .pixel.refresh {
