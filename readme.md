@@ -1,12 +1,18 @@
 # sketch
-<!-- [IMG-HERE](LINK TO DEMO HERE) -->
-<a href="https://www.theodinproject.com/lessons/foundations-rock-paper-scissors" target="_blank">The Odin Project</a> called this an etch-a-sketch… I disagree! It's more 'paintish' 🙃. I am currently designing and programming it using vanilla HTML, CSS & JavaScript for them.
+[![sketchMockUp](https://user-images.githubusercontent.com/90482169/207198119-e9707bbc-0318-440a-9f04-cc4d8d3f6c0a.jpg)
+](https://johnkeyscloud.github.io/sketchApp/)
+
+<a href="https://www.theodinproject.com/lessons/foundations-rock-paper-scissors" target="_blank">The Odin Project</a> titled this project an Etch-a-Sketch; however, considering the functionality desired, I just prefer to call it Sketch. It is most useful, in my opinion, for drawing pixelated sprites. 
+Designed and programmed using using vanilla HTML, CSS & JavaScript.
 
 ### Notes
+I wanted to keep the UX/UI clean and straightforward with a minimal, yet modern aesthetic. My favorite part of authoring this project was creating the animated labels for the color inputs. Styling color inputs on their own in vanilla code isn't the most fun, but I really wanted to have the labels circle around the input… not only fir aesthetic purposes, but also to make the settings card as concise as possible without forsaking application features seen in other submissions for this particular project (see the code snippet below for a peek under the hood 👀). An honorable mention though, would be the shade toggle button. I added depth to the text within the button on click, giving said text a shaded look when the toggle is enabled. Cool stuff…
 
-I'm currently building 🛠 this! The color palette is inspired by the insanely creative, animated Netflix series: <a href="https://www.netflix.com/title/80174608">Love, Death & Robots</a>… specifically the episode <a href="https://lovedeathrobots.fandom.com/wiki/Zima_Blue" target="_blank">Zima Blue</a>.
+Anywho, I will probably end up using the app for my own pixel art 😅💭.
 
-Included is the initial logic and the minimally designed interface (… I think I will keep it this way throughout the project 🤔).  
+Oh! The **Zima** theme color palette was inspired by the insanely creative, animated Netflix series, <a href="https://www.netflix.com/title/80174608">Love, Death & Robots</a> episode <a href="https://lovedeathrobots.fandom.com/wiki/Zima_Blue" target="_blank">Zima Blue</a>.
+
+Enjoy! ^_^
 
 ### - ツkc💭
 
@@ -19,10 +25,11 @@ Included is the initial logic and the minimally designed interface (… I think 
 * Terminal
 
 ## Summary
+* **CSS Grid** is used to generate/regenerate the canvas in a live fashion (without reloading the page); However, it does result in the loss of the current sessions art (…for which I've included a warning in the help section). 
+* Used **CSS Variables** with JavaScript for most of the toggling features (i.e. themes and canvas sizing)
 * Used HTML5 **semantic elements** for better readability, structure & accessibility.
-* **Grid** bro. // will add more here soon 🤓
 * Used **Git** & **GitHub** for source control/project management. 
 * **Cross tested** design and functionality on desktop & mobile browsers.
 
 ## cloudySnippets💭
-<!-- ![cloudSnippets2](CODE-SNIPPET-IMG-HERE) -->
+![cloudSnippets2](https://user-images.githubusercontent.com/90482169/207202392-cb3d33f2-cfac-4dc2-8ecd-ce6be1f0fe52.png)
