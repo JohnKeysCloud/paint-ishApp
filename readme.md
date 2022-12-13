@@ -26,7 +26,7 @@ Enjoy! ^_^
 
 ## Summary
 * **CSS Grid** is used to generate/regenerate the canvas in a live fashion (without reloading the page); However, it does result in the loss of the current sessions art (…for which I've included a warning in the help section). 
-* Used **CSS Variables** with JavaScript for most of the toggling features (i.e. themes and canvas sizing)
+* Used **CSS Variables** with JavaScript for most of the toggling features (i.e. themes and canvas sizing).
 * Used HTML5 **semantic elements** for better readability, structure & accessibility.
 * Used **Git** & **GitHub** for source control/project management. 
 * **Cross tested** design and functionality on desktop & mobile browsers.
