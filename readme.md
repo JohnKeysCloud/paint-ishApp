@@ -6,7 +6,7 @@
 I designed and programmed the app using using vanilla HTML, CSS & JavaScript.
 
 ### Notes
-I wanted to keep the UX/UI clean and straightforward with a minimal, yet modern aesthetic. My favorite part of authoring this project was creating the animated labels for the color inputs. Styling color inputs on their own in vanilla code isn't the most fun, so I figured I'd not only do that but also have the labels circle around the input… not only for a cleaner look, but also to ensure that the settings card is concise as possible without forsaking application features seen in other submissions for this particular project (see the code snippet below for a peek under the hood 👀). An honorable mention though, would be the shade toggle button design. I added depth to the text within the button on click, giving said text a shaded look when the toggle is enabled. Cool stuff…
+I wanted to keep the UX/UI clean and straightforward with a minimal, yet modern aesthetic. My favorite part of authoring this project was creating the animated labels for the color inputs. Styling color inputs on their own in vanilla code isn't the most fun, so I figured I'd not only do that but also have the labels circle around the input… not only for a cleaner look, but also to ensure that the settings card is as concise as possible without forsaking application features seen in other submissions for this particular project (see the code snippet below for a peek under the hood 👀). An honorable mention though, would be the shade toggle button design. I added depth to the text within the button on click, giving said text a shaded look when the toggle is enabled. Cool stuff…
 
 Anywho, I will probably end up using the app for my own pixel art 😅💭.
 
