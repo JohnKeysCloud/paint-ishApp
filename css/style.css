@@ -179,9 +179,10 @@
   --color-purple-rain:#8F6BC3;
   --color-rebecca-purple: #663399;
   --color-zima-blue: #16B8F3;
-  --image-cyclone: url('../assets/images/logo-cyclone.webP') center / cover no-repeat;
-  --image-space: url('../assets/images/theme-zima-blue.jpg') center / cover no-repeat;
+  --image-cyclone: center / cover no-repeat url('../assets/images/logo-cyclone.webp');
+  --image-space: center / cover no-repeat url('../assets/images/theme-zima-blue.jpg');
 
+  /* assets/images/logo-cyclone.webp */
   /* ? Puck-Man */
 	--color-blinky: #e91113;
 	--color-clyde: #fe8b0d;

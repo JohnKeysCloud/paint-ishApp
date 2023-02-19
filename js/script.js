@@ -25,12 +25,12 @@ function toggleEasterEgg() {
 	cycloneStudiosLogo.classList.toggle('cyclone-mode');
 	
 	if (cycloneStudiosLogo.classList.contains('cyclone-mode')) {
-		pixelColor = 'var(--image-cyclone)';
+		root.style.setProperty('--color-pixel', 'var(--image-cyclone');
 		root.style.setProperty('--easter-egg-opacity', '1');
 		root.style.setProperty('--easter-egg-scale', 'scale(0.25)');
 		root.style.setProperty('--easter-egg-visibility', 'visible');
 	} else {
-		pixelColor = lastPixelColor;
+		root.style.setProperty('--color-pixel', lastPixelColor);
 		root.style.setProperty('--easter-egg-opacity', '0');
 		root.style.setProperty('--easter-egg-scale', 'scale(0)');
         root.style.setProperty('--easter-egg-visibility', 'hidden');
