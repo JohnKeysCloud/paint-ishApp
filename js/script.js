@@ -21,11 +21,12 @@ let pixelColor = 'var(--color-pixel)';
 
 function toggleEasterEgg() {
 	let lastPixelColor = pixelColorInput.value;
+	let cycloneMode = "center / cover no-repeat url('../assets/images/logo-cyclone.webp')";
 
 	cycloneStudiosLogo.classList.toggle('cyclone-mode');
 	
 	if (cycloneStudiosLogo.classList.contains('cyclone-mode')) {
-		root.style.setProperty('--color-pixel', 'var(--image-cyclone');
+		root.style.setProperty('--color-pixel', cycloneMode);
 		root.style.setProperty('--easter-egg-opacity', '1');
 		root.style.setProperty('--easter-egg-scale', 'scale(0.25)');
 		root.style.setProperty('--easter-egg-visibility', 'visible');
