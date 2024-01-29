@@ -19,6 +19,11 @@ let canvas = document.getElementById('canvas');
 let oneAxisLength = 32;
 let pixelColor = 'var(--color-pixel)';
 
+function updateFooterYear() {
+	let year = new Date().getFullYear();
+	document.getElementById('footer-year').textContent = year;
+}
+
 function toggleEasterEgg() {
 	let lastPixelColor = pixelColorInput.value;
 	let cycloneMode = "center / cover no-repeat url('../assets/images/logo-cyclone.webp')";
@@ -340,6 +345,7 @@ function createGrid() {
 }
 
 createGrid();
+updateFooterYear();
 slider.addEventListener('input', createGrid);
 
 function initiateUserPref() {
